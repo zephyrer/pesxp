@@ -1,0 +1,424 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\PesXp.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""l.CHS\\afxres.rc""      // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\PesXp.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 PesXp"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+    LTEXT           "PesXp，1.0 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2011",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "确定",IDOK,113,41,50,14,WS_GROUP
+END
+
+IDD_LOGIN_DIALOG DIALOGEX 0, 0, 143, 217
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "PesXp实况足球在线联赛平台"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "登陆",IDC_LOGIN_BUTTON_LOGIN,31,55,31,15
+    PUSHBUTTON      "注册",IDC_LOGIN_BUTTON_REGISTER,82,55,31,15
+    LTEXT           "用户名",IDC_LOGIN_TEXT_USER_NAME,20,12,24,9
+    LTEXT           "密码",IDC_LOGIN_TEXT_PASSWORD,27,33,16,9
+    EDITTEXT        IDC_LOGIN_EDIT_USER_NAME,48,12,77,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_LOGIN_EDIT_PASSWORD,48,33,77,12,ES_PASSWORD | ES_AUTOHSCROLL
+    CONTROL         "",IDC_LOGIN_SEPARATOR,"Static",SS_BLACKFRAME | SS_SUNKEN,7,81,129,1
+    LTEXT           "用户名",IDC_REG_TEXT_REG_USER_NAME,20,106,24,9
+    LTEXT           "密码",IDC_REG_TEXT_REG_PASSWORD,27,123,16,9
+    LTEXT           "确认密码",IDC_REG_TEXT_CONFIRM_PASSWORD,13,140,28,9
+    LTEXT           "注册QQ",IDC_REG_TEXT_QQ,17,157,24,9
+    PUSHBUTTON      "提交注册",IDC_LOGIN_BUTTON_SUBMIT,89,195,36,15
+    LTEXT           "注册邮箱",IDC_REG_TEXT_EMAIL,13,174,29,9
+    LTEXT           "请输入你的注册信息",IDC_REG_TEXT_TITLE,63,89,62,11
+    EDITTEXT        IDC_REG_EDIT_USER_NAME,48,106,77,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_REG_EDIT_PASSWORD,48,123,77,12,ES_PASSWORD | ES_AUTOHSCROLL
+    EDITTEXT        IDC_REG_EDIT_CONFIRM_PASSWORD,48,140,77,12,ES_PASSWORD | ES_AUTOHSCROLL
+    EDITTEXT        IDC_REG_EDIT_QQ,48,157,77,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_REG_EDIT_EMAIL,48,174,77,12,ES_AUTOHSCROLL
+    LTEXT           "",IDC_REG_TEXT_TIP_INFO,13,195,69,10
+END
+
+IDD_USER_CENTER_DIALOG DIALOGEX 0, 0, 352, 246
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "PesXp实况足球在线联赛平台"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    RTEXT           "账号:",IDC_UC_TEXT6,23,24,20,11
+    RTEXT           "积分:",IDC_UC_TEXT7,23,42,20,11
+    RTEXT           "胜:",IDC_UC_TEXT8,31,81,12,9
+    RTEXT           "平:",IDC_UC_TEXT9,31,94,12,9
+    RTEXT           "负:",IDC_UC_TEXT10,31,107,12,9
+    RTEXT           "胜率:",IDC_UC_TEXT11,22,120,21,10
+    RTEXT           "排名:",IDC_UC_TEXT12,22,134,21,10
+    LTEXT           "89",IDC_UC_TEXT_WIN,49,81,27,10
+    LTEXT           "2",IDC_UC_TEXT_EQUAL,49,94,27,10
+    LTEXT           "1",IDC_UC_TEXT_LOSE,49,107,27,10
+    LTEXT           "95.32%",IDC_UC_TEXT_WIN_PERCENT,49,120,27,10
+    PUSHBUTTON      "我的荣誉",IDC_BUTTON_GLORY,22,148,40,15
+    PUSHBUTTON      "我的赛程",IDC_BUTTON_CALENDAR,86,148,40,15
+    RTEXT           "等待你确认的比分:",IDC_UC_TEXT13,23,198,69,10
+    RTEXT           "等对方确认的比分:",IDC_UC_TEXT14,23,217,69,10
+    LTEXT           "0",IDC_UC_TEXT_NEED_CONFIRM,98,198,18,10
+    LTEXT           "1",IDC_UC_TEXT_NOT_CONFIRM,98,217,18,10
+    PUSHBUTTON      "进行中的联赛",IDC_BUTTON_LEAGUE_DOING,145,98,13,63,BS_MULTILINE
+    LTEXT           ">>",IDC_UC_FLAG,159,121,10,15
+    CONTROL         "",IDC_UC_SEPARATOR,"Static",SS_BLACKFRAME | SS_SUNKEN,175,7,1,232
+    GROUPBOX        "个人信息",IDC_UC_TEXT,7,7,163,53
+    GROUPBOX        "个人战绩",IDC_UC_TEXT1,7,67,163,105
+    GROUPBOX        "比分管理",IDC_UC_TEXT2,7,179,163,60
+    LTEXT           "italyouxiao@gmail.com",IDC_UC_TEXT_ACCOUNT,49,24,107,11
+    LTEXT           "1225 XP币",IDC_UC_TEXT_CREDIE,49,42,107,11
+    LTEXT           "3",IDC_UC_TEXT_RANK,49,134,27,10
+    RTEXT           "进球:",IDC_UC_TEXT15,86,81,21,9
+    RTEXT           "失球:",IDC_UC_TEXT16,86,94,21,10
+    RTEXT           "红牌:",IDC_UC_TEXT17,86,107,21,10
+    RTEXT           "黄牌:",IDC_UC_TEXT18,86,120,21,10
+    LTEXT           "246",IDC_UC_TEXT_GOAL_COUNT,113,81,27,10
+    LTEXT           "22",IDC_UC_TEXT_LOSE_COUNT,113,94,27,10
+    LTEXT           "11",IDC_UC_TEXT_RED_COUNT,113,107,27,10
+    LTEXT           "24",IDC_UC_TEXT_YELLOW_COUNT,113,120,27,10
+    PUSHBUTTON      "上报比分",IDC_BUTTON_SUBMIT_SCORE,122,185,36,24
+    COMBOBOX        IDC_UC_COMBO_JOIN_LEAGUE,222,23,109,50,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "我参与的联赛",IDC_UC_TEXT3,181,7,164,72
+    RTEXT           "名称:",IDC_UC_TEXT19,196,24,20,11
+    RTEXT           "胜:",IDC_UC_TEXT20,204,42,12,9
+    RTEXT           "平:",IDC_UC_TEXT21,204,54,12,9
+    RTEXT           "负:",IDC_UC_TEXT22,204,65,12,9
+    RTEXT           "排名:",IDC_UC_TEXT24,241,54,21,9
+    LTEXT           "89",IDC_UC_TEXT_LEAGUE_WIN,222,42,19,10
+    LTEXT           "2",IDC_UC_TEXT_LEAGUE_EQUAL,222,54,19,10
+    LTEXT           "1",IDC_UC_TEXT_LEAGUE_LOSE,222,65,19,10
+    RTEXT           "胜率:",IDC_UC_TEXT23,241,42,21,9
+    LTEXT           "95.32%",IDC_UC_TEXT_LEAGUE_WIN_PERCENT,270,42,27,10
+    LTEXT           "1",IDC_UC_TEXT_LEAGUE_RANK,270,54,18,10
+    PUSHBUTTON      "进入",IDC_BUTTON_ENTER_MY_LEAGUE,302,55,29,19
+    COMBOBOX        IDC_UC_COMBO_OTHER_LEAGUE,222,97,109,60,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    RTEXT           "名称:",IDC_UC_TEXT25,196,98,20,11
+    RTEXT           "领头羊:",IDC_UC_TEXT26,189,116,27,11
+    LTEXT           "AC米兰 - NesTa.xP",IDC_UC_TEXT_THE_FIRST,222,116,66,10
+    PUSHBUTTON      "观战",IDC_BUTTON_WATCH_LEAGUE,302,139,29,19
+    COMBOBOX        IDC_UC_COMBO_SIGN_LEAGUE,222,185,109,54,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "接受报名的联赛",IDC_UC_TEXT5,181,167,164,72
+    RTEXT           "名称:",IDC_UC_TEXT29,196,186,20,11
+    RTEXT           "截止日:",IDC_UC_TEXT30,179,204,37,11
+    PUSHBUTTON      "报名",IDC_BUTTON_LEAGUE_SIGN,302,213,29,19
+    LTEXT           "2011-04-01",IDC_UC_TEXT_LEAGUE_END_DATE,222,204,104,8
+    RTEXT           "人数:",IDC_UC_TEXT31,196,219,20,11
+    LTEXT           "18",IDC_UC_TEXT_SIGN_COUNT,222,219,48,9
+    GROUPBOX        "正在进行的联赛",IDC_UC_TEXT4,181,83,164,80
+    RTEXT           "人数:",IDC_UC_TEXT28,189,148,27,11
+    LTEXT           "18",IDC_UC_TEXT_PLAYER_COUNT,222,148,28,10
+    RTEXT           "副班长:",IDC_UC_TEXT27,189,132,27,11
+    LTEXT           "巴里 - youxiao",IDC_UC_TEXT_THE_END,222,132,66,10
+    PUSHBUTTON      "确认比分",IDC_BUTTON_AGREE_SCORE,122,213,36,24
+    RTEXT           "财产:",IDC_UC_TEXT32,241,65,21,9
+    LTEXT           "2205",IDC_UC_TEXT_LEAGUE_MONEY,270,65,19,10
+END
+
+IDD_SUBMIT_SCORE_DIALOG DIALOGEX 0, 0, 227, 150
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "PesXp实况足球在线联赛平台 - 上报比分"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "主队",IDC_SUBMIT_TEXT,38,7,86,117
+    GROUPBOX        "客队",IDC_STATIC,134,7,86,117
+    RTEXT           "球队:",IDC_SUBMIT_TEXT1,11,27,20,8
+    RTEXT           "比分:",IDC_SUBMIT_TEXT2,11,43,20,8
+    RTEXT           "进球:",IDC_SUBMIT_TEXT3,11,59,20,8
+    RTEXT           "助攻:",IDC_SUBMIT_TEXT4,11,75,20,8
+    RTEXT           "红牌:",IDC_SUBMIT_TEXT5,11,91,20,8
+    RTEXT           "黄牌:",IDC_SUBMIT_TEXT6,11,107,20,8
+    COMBOBOX        IDC_COMBO_OWNER_GOAL,47,41,46,77,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_OWNER_GOAL_PLAYER,47,57,46,28,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_OWNER_ASSIST_PLAYER,47,73,46,29,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_OWNER_RED_PLAYER,47,89,46,54,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_OWNER_YELLOW_PLAYER,47,105,46,38,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMB_GUEST_TEAM_LIST,143,25,46,92,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_GUEST_GOAL,143,41,46,77,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_GUEST_GOAL_PLAYER,143,57,46,28,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_GUEST_ASSIST_PLAYER,143,73,46,28,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_GUEST_RED_PLAYER,143,89,46,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_GUEST_YELLOW_PLAYER,143,105,46,38,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "+",IDC_PLAYER_LIST,99,59,13,9
+    PUSHBUTTON      "+",IDC_PLAYER_LIST2,99,91,13,9
+    PUSHBUTTON      "+",IDC_PLAYER_LIST3,99,107,13,9
+    PUSHBUTTON      "+",IDC_PLAYER_LIST4,195,59,13,9
+    PUSHBUTTON      "+",IDC_PLAYER_LIST5,195,75,13,9
+    PUSHBUTTON      "+",IDC_PLAYER_LIST6,195,91,13,9
+    PUSHBUTTON      "+",IDC_PLAYER_LIST7,195,107,13,9
+    PUSHBUTTON      "+",IDC_PLAYER_LIST1,99,75,13,9
+    PUSHBUTTON      "上报比分",IDC_BUTTON_SUBMIT_SCORE,169,127,51,16
+    LTEXT           "AC米兰",IDC_SUBMIT_TEXT_OWNER_TEAM,47,27,64,8
+    LTEXT           "主队进行比分上报,客队进行比分确认",IDC_SUBMIT_TEXT_TIP_INFO,13,131,137,8
+END
+
+IDD_AGREE_SCORE_DIALOG DIALOGEX 0, 0, 183, 203
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "PesXp实况足球在线联赛平台 - 确认比分"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_AGREE_SEPARATOR,"Static",SS_BLACKFRAME | SS_SUNKEN,6,49,170,1
+    LTEXT           "您当前需要确认的比分场次有 2 场",IDC_AGREE_TEXT_TIP_INFO,7,20,169,14
+    GROUPBOX        "主队",IDC_SUBMIT_TEXT,34,57,65,117
+    GROUPBOX        "客队",IDC_STATIC,109,57,67,117
+    RTEXT           "球队:",IDC_SUBMIT_TEXT1,7,77,20,8
+    RTEXT           "比分:",IDC_SUBMIT_TEXT2,7,93,20,8
+    RTEXT           "进球:",IDC_SUBMIT_TEXT3,7,109,20,8
+    RTEXT           "助攻:",IDC_SUBMIT_TEXT4,7,125,20,8
+    RTEXT           "红牌:",IDC_SUBMIT_TEXT5,7,141,20,8
+    RTEXT           "黄牌:",IDC_SUBMIT_TEXT6,7,157,20,8
+    COMBOBOX        IDC_COMBO_OWNER_GOAL_PLAYER,43,108,46,28,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_OWNER_ASSIST_PLAYER,43,124,46,29,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_OWNER_RED_PLAYER,43,140,46,54,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_OWNER_YELLOW_PLAYER,43,156,46,38,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_GUEST_GOAL_PLAYER,122,108,46,28,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_GUEST_ASSIST_PLAYER,122,124,46,28,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_GUEST_RED_PLAYER,122,140,46,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_GUEST_YELLOW_PLAYER,122,156,46,38,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "确认比分",IDC_BUTTON_SUBMIT_SCORE,125,180,51,16
+    LTEXT           "AC米兰",IDC_SUBMIT_TEXT_OWNER_TEAM,122,76,49,8
+    LTEXT           "国际米兰",IDC_SUBMIT_TEXT_OWNER_TEAM2,43,76,49,8
+    LTEXT           "0",IDC_SUBMIT_TEXT_OWNER_TEAM3,43,93,49,8
+    LTEXT           "1",IDC_SUBMIT_TEXT_OWNER_TEAM4,122,93,49,8
+END
+
+IDD_PLAYER_LIB_DIALOG DIALOGEX 0, 0, 384, 376
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Pes2011 球员超市"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PLAYER_LIB_TREE,"SysTreeView32",TVS_HASBUTTONS | WS_BORDER | WS_HSCROLL | WS_TABSTOP,11,20,105,141
+    CONTROL         "",IDC_PLAYER_LIB_LIST,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,137,20,240,141
+    CONTROL         "",IDC_PLAYER_LIB_SEPARATOR1,"Static",SS_BLACKFRAME | SS_SUNKEN,128,6,1,161
+    CONTROL         "",IDC_PLAYER_LIB_SEPARATOR2,"Static",SS_BLACKFRAME | SS_SUNKEN,7,172,370,1
+    GROUPBOX        "按条件查找",IDC_STATIC,6,7,118,160
+    GROUPBOX        "球员列表",IDC_STATIC,133,7,244,160
+    GROUPBOX        "球员详细资料",IDC_STATIC,7,177,370,192
+    CONTROL         "",IDC_PIC_STATIC,"Static",SS_BITMAP,15,193,15,13
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "PesXp.exe"
+            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "OriginalFilename", "PesXp.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_LOGIN_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 136
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 210
+    END
+
+    IDD_USER_CENTER_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 345
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 239
+    END
+
+    IDD_SUBMIT_SCORE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 220
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 143
+    END
+
+    IDD_AGREE_SCORE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 176
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 196
+    END
+
+    IDD_PLAYER_LIB_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 377
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 369
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_SUBMIT_SCORE_DIALOG DLGINIT
+BEGIN
+    IDC_COMBO_OWNER_GOAL, 0x403, 6, 0
+0x2c31, 0x2c33, 0x0034, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 PesXp(&A)..."
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\PesXp.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "l.CHS\afxres.rc"      // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

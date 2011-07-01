@@ -140,6 +140,7 @@
 #define IDC_PLAYER_LIB_SEPARATOR1       1124
 #define IDC_PLAYER_LIB_SEPARATOR2       1125
 #define IDC_PIC_STATIC                  1126
+#define IDC_PLAYER_LIB_PIC              1126
 #define IDC_STATIC_1                    1129
 #define IDC_STATIC_2                    1130
 #define IDC_STATIC_3                    1131

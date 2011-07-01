@@ -272,12 +272,12 @@ BEGIN
     GROUPBOX        "按条件查找",IDC_STATIC,6,7,118,160
     GROUPBOX        "球员列表",IDC_STATIC,133,7,244,160
     GROUPBOX        "球员详细资料",IDC_STATIC,7,177,370,171
-    CONTROL         "",IDC_PIC_STATIC,"Static",SS_BITMAP,15,193,15,13,WS_EX_STATICEDGE
-    RTEXT           "姓名",IDC_STATIC,21,301,16,10
+    CONTROL         "",IDC_PLAYER_LIB_PIC,"Static",SS_BITMAP,15,193,15,13,WS_EX_STATICEDGE
+    RTEXT           "姓名",IDC_STATIC,24,301,16,10
     RTEXT           "实况名",IDC_STATIC,127,193,26,10
-    RTEXT           "国籍",IDC_STATIC,21,312,16,10
-    RTEXT           "国家队",IDC_STATIC,11,323,26,10
-    RTEXT           "俱乐部",IDC_STATIC,11,334,26,10
+    RTEXT           "国籍",IDC_STATIC,24,312,16,10
+    RTEXT           "国家队",IDC_STATIC,14,323,26,10
+    RTEXT           "俱乐部",IDC_STATIC,14,334,26,10
     RTEXT           "生日",IDC_STATIC,137,245,16,10
     RTEXT           "星座",IDC_STATIC,137,258,16,10
     RTEXT           "年龄",IDC_STATIC,137,206,16,10
@@ -317,8 +317,8 @@ BEGIN
     RTEXT           "体力",IDC_STATIC,199,232,16,10
     RTEXT           "速度",IDC_STATIC,199,245,16,10
     RTEXT           "加速",IDC_STATIC,199,258,16,10
-    RTEXT           "特殊技能",IDC_STATIC,110,334,32,10
-    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME | SS_SUNKEN,110,329,267,1
+    RTEXT           "特殊技能",IDC_STATIC,118,334,32,10
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME | SS_SUNKEN,118,328,252,1
     LTEXT           "内斯塔",IDC_STATIC_1,47,301,61,10
     LTEXT           "意大利",IDC_STATIC_2,47,312,61,10
     LTEXT           "-",IDC_STATIC_3,47,323,61,10
@@ -363,7 +363,7 @@ BEGIN
     LTEXT           "5",IDC_STATIC_42,358,284,15,10
     LTEXT           "5",IDC_STATIC_43,358,297,15,10
     LTEXT           "C",IDC_STATIC_44,358,310,15,10
-    LTEXT           " 重视防守 擅长滑铲 补位高手 后防领袖",IDC_STATIC_45,150,334,227,10
+    LTEXT           " 重视防守 擅长滑铲 补位高手 后防领袖",IDC_STATIC_45,158,334,212,10
 END
 
 

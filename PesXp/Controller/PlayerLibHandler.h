@@ -11,7 +11,7 @@ public:
     CPlayerLibHandler(void);
     ~CPlayerLibHandler(void);
 
-	CPlayerLibHandler(CTreeCtrl*, CListCtrl*, CStatic*);
+	CPlayerLibHandler(HWND, CTreeCtrl*, CListCtrl*, CStatic*);
 
     bool initContinents();
 	bool initTeams();
@@ -20,9 +20,10 @@ public:
 	bool getPlayerListByTeamName(const char* team, bool club);
 	bool getPlayerDetail(const char* name, const char* club);
 
-    CTreeCtrl* m_pTreeCtrl;
-	CListCtrl* m_pListCtrl;
-	CStatic* m_pPictureCtrl;
+    HWND m_playerLibHwnd;
+    CTreeCtrl*           m_pTreeCtrl;                 // 选择查找条件控件
+    CListCtrl*           m_pListCtrl;                 // 球员列表控件
+    CStatic*             m_pPictureCtrl;              // 球员头像显示控件
 	 
 	vector<pair<int, HTREEITEM> > m_continent_list;
 	vector<pair<string, string> > m_player_list;

@@ -34,8 +34,12 @@ private:
 
 	CPlayerLibHandler* m_pPlayerLibHandler;		// 球员信息处理
 
+	CFont*   m_pFont; 
+	LOGFONT   m_lf;
+
 public:
 	virtual BOOL OnInitDialog();
 	afx_msg void OnTvnSelchangedPlayerLibTree(NMHDR *pNMHDR, LRESULT *pResult);
 	afx_msg void OnNMDblclkPlayerLibList(NMHDR *pNMHDR, LRESULT *pResult);
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 };

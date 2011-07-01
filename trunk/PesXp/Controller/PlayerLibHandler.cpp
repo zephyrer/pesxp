@@ -1,6 +1,7 @@
 #include "StdAfx.h"
 #include "PlayerLibHandler.h"
 #include "atlimage.h"
+#include <io.h>
 
 #pragma comment(lib, ".\\Lib\\sqlite3\\lib\\sqlite3.lib");
 
@@ -53,6 +54,14 @@ char* G2U(const char* gb2312)
 	WideCharToMultiByte(CP_UTF8, 0, wstr, -1, str, len, NULL, NULL);
 	if(wstr) delete[] wstr;
 	return str;
+}
+
+//
+// 检查文件是否存在
+//
+bool file_exists(const char* file_path)
+{
+	return (access(file_path, 0) == 0);
 }
 //
 // 查询数据库大洲信息回调函数
@@ -136,13 +145,78 @@ static int _player_detail_callback(void * param, int argc, char ** argv, char **
 	CStatic* pPictureCtrl = pPlayerLibHandler->m_pPictureCtrl;
 
 	string picture_path = ".\\Bin\\face\\";
+	//string picture_path = "H:\\pesxp\\PesXp\\Bin\\face\\";
 	picture_path += argv[0];
+	//
+	// 如果球员头像不存在则加载默认头像
+	//
+	if (!file_exists(picture_path.c_str()))
+	{
+		picture_path = ".\\Bin\\face\\default";
+	}
 
-
+	//
+	// 加载球员头像
+	//
 	CImage img; 
 	HRESULT ret = img.Load(picture_path.c_str()); 
 	HBITMAP bitmap = img.Detach(); 
 	pPictureCtrl->SetBitmap(bitmap);
+
+	string name						= U2G(argv[2]);
+	string default_position			= argv[3];
+	string default_complex_value	= argv[4];
+	string we_name					= argv[5];
+	string country_position			= argv[6];
+	string country_complex_value	= argv[7];
+	string country					= U2G(argv[8]);
+	string club_position			= argv[9];
+	string club_complex_value		= argv[10];
+	string country_team				= U2G(argv[11]);
+	string club						= U2G(argv[12]);
+	string birth					= U2G(argv[13]);
+	string constellation			= U2G(argv[14]);
+	string age						= argv[15];
+	string hight					= argv[16];
+	string weight					= argv[17];
+	string favoured_side			= U2G(argv[18]);
+	string foot						= U2G(argv[19]);
+	string attack					= argv[20];
+	string shot_power				= argv[21];
+	string defend					= argv[22];
+	string shot_skill				= argv[23];
+	string balance					= argv[24];
+	string free_kick_accuracy		= argv[25];
+	string physical					= argv[26];
+	string radian					= argv[27];
+	string speed					= argv[28];
+	string header					= argv[29];
+	string speed_up					= argv[30];
+	string bounce					= argv[31];
+	string reaction					= argv[32];
+	string skill					= argv[33];
+	string agile					= argv[34];
+	string offensive				= argv[35];
+	string precision_ball			= argv[36];
+	string spirit					= argv[37];
+	string ball_speed				= argv[38];
+	string gk_skill					= argv[39];
+	string short_pass_accuracy		= argv[40];
+	string assort					= argv[41];
+	string short_pass_speed			= argv[42];
+	string state_stability			= argv[43];
+	string long_pass_accuracy		= argv[44];
+	string weak_foot_accuracy		= argv[45];
+	string long_pass_speed			= argv[46];
+	string weak_foot_frequency		= argv[47];
+	string shot_accuracy			= argv[48];
+	string injured					= argv[49];
+	string special_ability			= U2G(argv[50]);
+
+	//
+	// 加载球员具体属性
+	//
+
 
 	return 0;
 }
@@ -218,24 +292,28 @@ bool CPlayerLibHandler::initTeams()
 	return true;
 }
 
-bool CPlayerLibHandler::getPlayerListByTeamName(const char* team)
+bool CPlayerLibHandler::getPlayerListByTeamName(const char* team, bool club)
 {
 	if (!initDB())
 	{
 		return false;
 	}
-	
+
 	m_pListCtrl->DeleteAllItems();
 	m_player_list.clear();
 	char * pErrMsg = 0;
-	char sql[255] = {0};
-	const char* sSQL3 = "select * from players where country = \"";
-	strcat(sql, sSQL3);
-	strcat(sql, G2U(team));
-	strcat(sql, "\";");
+
+	string team_type = "club";
+	if (!club)
+	{
+		team_type = "country";
+	}
+
+	string sql = "select * from players where ";
+	sql = sql + team_type + " = \"" + G2U(team) + "\";";
 
 	// 查询数据表
-	sqlite3_exec( m_pDb, sql, _players_callback, this, &pErrMsg);
+	sqlite3_exec( m_pDb, sql.c_str(), _players_callback, this, &pErrMsg);
 
 	return true;
 }

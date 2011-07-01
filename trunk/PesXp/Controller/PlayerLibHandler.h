@@ -17,7 +17,7 @@ public:
 	bool initTeams();
 	bool initPlayers();
 	bool initDB();
-	bool getPlayerListByTeamName(const char* team);
+	bool getPlayerListByTeamName(const char* team, bool club);
 	bool getPlayerDetail(const char* name, const char* club);
 
     CTreeCtrl* m_pTreeCtrl;

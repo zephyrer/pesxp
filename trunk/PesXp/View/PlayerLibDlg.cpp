@@ -34,6 +34,7 @@ BEGIN_MESSAGE_MAP(CPlayerLibDlg, CDialog)
 
 	ON_NOTIFY(TVN_SELCHANGED, IDC_PLAYER_LIB_TREE, &CPlayerLibDlg::OnTvnSelchangedPlayerLibTree)
 	ON_NOTIFY(NM_DBLCLK, IDC_PLAYER_LIB_LIST, &CPlayerLibDlg::OnNMDblclkPlayerLibList)
+	ON_WM_CTLCOLOR()
 END_MESSAGE_MAP()
 
 
@@ -92,7 +93,7 @@ BOOL CPlayerLibDlg::OnInitDialog()
 	m_listCtrl.SetExtendedStyle(dwStyles); //设置扩展风格
 
 	m_listCtrl.InsertColumn( 0, "姓名", LVCFMT_LEFT, 92);//插入列
-	m_listCtrl.InsertColumn( 1, "国家", LVCFMT_LEFT, 75);
+	m_listCtrl.InsertColumn( 1, "国籍", LVCFMT_LEFT, 75);
 	m_listCtrl.InsertColumn( 2, "俱乐部", LVCFMT_LEFT, 90);
 	m_listCtrl.InsertColumn( 3, "位置", LVCFMT_LEFT, 40);
 	m_listCtrl.InsertColumn( 4, "综合", LVCFMT_LEFT, 40);
@@ -119,16 +120,18 @@ void CPlayerLibDlg::OnTvnSelchangedPlayerLibTree(NMHDR *pNMHDR, LRESULT *pResult
 	//
     // 获得选项句柄
 	//
-    HTREEITEM select_htem=m_treeCtrl.GetSelectedItem();
+    HTREEITEM select_htem = m_treeCtrl.GetSelectedItem();
 	//
 	// 如果选择根选项则不处理
 	//
-	if (!m_treeCtrl.GetParentItem(select_htem))
+	HTREEITEM parent_item = m_treeCtrl.GetParentItem(select_htem);
+	if (!parent_item)
 	{
 		return;
 	}
-	
-    CString team_name = m_treeCtrl.GetItemText(select_htem);
+
+	CString parent_name = m_treeCtrl.GetItemText(parent_item);
+    CString team_name   = m_treeCtrl.GetItemText(select_htem);
 
 	if (!m_isShowMidWnd)
 	{
@@ -136,7 +139,13 @@ void CPlayerLibDlg::OnTvnSelchangedPlayerLibTree(NMHDR *pNMHDR, LRESULT *pResult
 		m_isShowMidWnd = true;
 	}
 
-	m_pPlayerLibHandler->getPlayerListByTeamName(team_name.GetBuffer());
+	bool is_club = true;
+	if (parent_name == "欧洲" || parent_name == "非洲" || parent_name == "北、中、南美洲" || parent_name == "亚洲、大洋洲")
+	{
+		is_club = false;
+	}
+
+	m_pPlayerLibHandler->getPlayerListByTeamName(team_name.GetBuffer(), is_club);
 
 	*pResult = 0;
 }
@@ -153,6 +162,7 @@ void CPlayerLibDlg::OnNMDblclkPlayerLibList(NMHDR *pNMHDR, LRESULT *pResult)
 	{
 		SetWindowPos(NULL, 0, 0, m_rectLarge.Width(), m_rectLarge.Height(), SWP_NOMOVE | SWP_NOZORDER);
 		m_isShowLargeWnd = true;
+		//SendMessage(WM_CTLCOLOR);
 	}
 	
 	int player_count = m_pPlayerLibHandler->m_player_list.size();
@@ -162,4 +172,65 @@ void CPlayerLibDlg::OnNMDblclkPlayerLibList(NMHDR *pNMHDR, LRESULT *pResult)
 	m_pPlayerLibHandler->getPlayerDetail(name.c_str(), club.c_str());
 
 	*pResult = 0;
+}
+
+//
+// 自定义文本颜色
+//
+HBRUSH CPlayerLibDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
+
+	int ctrlId = pWnd->GetDlgCtrlID();
+
+	if (ctrlId == IDC_STATIC_12 ||
+		(ctrlId >= IDC_STATIC_15 && 
+		ctrlId <= IDC_STATIC_40))
+	{
+		pDC->SetTextColor(RGB(255, 0, 0));
+
+// 		CFont*   pFont=pWnd-> GetFont(); 
+// 		LOGFONT   lf; 
+// 		pFont-> GetLogFont(&lf); 
+// 		lf.lfWeight=FW_BOLD; 
+// 		pFont-> DeleteObject(); 
+// 		pFont-> CreateFontIndirect(&lf); 
+// 		pWnd-> SetFont(pFont); 
+// 		pFont-> DeleteObject(); 
+	}
+	else {
+	}
+// 	// TODO:  Change any attributes of the DC here
+// 	if (GetDlgItem(IDC_STATIC_12) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_15) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_16) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_17) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_18) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_19) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_20) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_21) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_22) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_23) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_24) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_25) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_26) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_27) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_28) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_29) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_30) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_31) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_32) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_33) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_34) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_35) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_36) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_37) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_38) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_39) == pWnd || \
+// 		GetDlgItem(IDC_STATIC_40) == pWnd)
+// 	{
+		
+	//}
+	// TODO:  Return a different brush if the default is not desired
+	return hbr;
 }

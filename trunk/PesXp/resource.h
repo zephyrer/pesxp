@@ -140,6 +140,51 @@
 #define IDC_PLAYER_LIB_SEPARATOR1       1124
 #define IDC_PLAYER_LIB_SEPARATOR2       1125
 #define IDC_PIC_STATIC                  1126
+#define IDC_STATIC_1                    1129
+#define IDC_STATIC_2                    1130
+#define IDC_STATIC_3                    1131
+#define IDC_STATIC_4                    1132
+#define IDC_STATIC_5                    1133
+#define IDC_STATIC_6                    1134
+#define IDC_STATIC_7                    1135
+#define IDC_STATIC_8                    1136
+#define IDC_STATIC_9                    1137
+#define IDC_STATIC_10                   1138
+#define IDC_STATIC_11                   1139
+#define IDC_STATIC_12                   1140
+#define IDC_STATIC_13                   1141
+#define IDC_STATIC_14                   1142
+#define IDC_STATIC_15                   1143
+#define IDC_STATIC_16                   1144
+#define IDC_STATIC_17                   1145
+#define IDC_STATIC_18                   1146
+#define IDC_STATIC_19                   1147
+#define IDC_STATIC_20                   1148
+#define IDC_STATIC_21                   1149
+#define IDC_STATIC_22                   1150
+#define IDC_STATIC_23                   1151
+#define IDC_STATIC_24                   1152
+#define IDC_STATIC_25                   1153
+#define IDC_STATIC_26                   1154
+#define IDC_STATIC_27                   1155
+#define IDC_STATIC_28                   1156
+#define IDC_STATIC_29                   1157
+#define IDC_STATIC_30                   1158
+#define IDC_STATIC_31                   1159
+#define IDC_STATIC_32                   1160
+#define IDC_STATIC_33                   1161
+#define IDC_STATIC_34                   1162
+#define IDC_STATIC_35                   1163
+#define IDC_STATIC_36                   1164
+#define IDC_STATIC_37                   1165
+#define IDC_STATIC_38                   1166
+#define IDC_STATIC_39                   1167
+#define IDC_STATIC_40                   1168
+#define IDC_STATIC_41                   1169
+#define IDC_STATIC_42                   1170
+#define IDC_STATIC_43                   1171
+#define IDC_STATIC_44                   1172
+#define IDC_STATIC_45                   1173
 
 // Next default values for new objects
 // 
@@ -147,7 +192,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        136
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1127
+#define _APS_NEXT_CONTROL_VALUE         1174
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

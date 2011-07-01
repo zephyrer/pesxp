@@ -65,7 +65,7 @@ BOOL CPesXpApp::InitInstance()
     // 加载USkin界面库
     // TODO USkin界面库不支持unicode编码 考虑以后更换界面库
     //
-    USkinInit(NULL, NULL, _T("..\\res\\DiyGreen.msstyles"));
+    USkinInit(NULL, NULL, _T("..\\res\\ChromeXP.msstyles"));
 
     while (true)
     {

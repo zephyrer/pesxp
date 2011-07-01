@@ -260,7 +260,7 @@ BEGIN
     LTEXT           "1",IDC_SUBMIT_TEXT_OWNER_TEAM4,122,93,49,8
 END
 
-IDD_PLAYER_LIB_DIALOG DIALOGEX 0, 0, 384, 376
+IDD_PLAYER_LIB_DIALOG DIALOGEX 0, 0, 384, 355
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Pes2011 球员超市"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
@@ -271,8 +271,99 @@ BEGIN
     CONTROL         "",IDC_PLAYER_LIB_SEPARATOR2,"Static",SS_BLACKFRAME | SS_SUNKEN,7,172,370,1
     GROUPBOX        "按条件查找",IDC_STATIC,6,7,118,160
     GROUPBOX        "球员列表",IDC_STATIC,133,7,244,160
-    GROUPBOX        "球员详细资料",IDC_STATIC,7,177,370,192
-    CONTROL         "",IDC_PIC_STATIC,"Static",SS_BITMAP,15,193,15,13
+    GROUPBOX        "球员详细资料",IDC_STATIC,7,177,370,171
+    CONTROL         "",IDC_PIC_STATIC,"Static",SS_BITMAP,15,193,15,13,WS_EX_STATICEDGE
+    RTEXT           "姓名",IDC_STATIC,21,301,16,10
+    RTEXT           "实况名",IDC_STATIC,127,193,26,10
+    RTEXT           "国籍",IDC_STATIC,21,312,16,10
+    RTEXT           "国家队",IDC_STATIC,11,323,26,10
+    RTEXT           "俱乐部",IDC_STATIC,11,334,26,10
+    RTEXT           "生日",IDC_STATIC,137,245,16,10
+    RTEXT           "星座",IDC_STATIC,137,258,16,10
+    RTEXT           "年龄",IDC_STATIC,137,206,16,10
+    RTEXT           "身高",IDC_STATIC,137,219,16,10
+    RTEXT           "体重",IDC_STATIC,137,232,16,10
+    RTEXT           "状态稳定度",IDC_STATIC,310,271,40,10
+    RTEXT           "逆足精度",IDC_STATIC,318,284,32,10
+    RTEXT           "逆足频度",IDC_STATIC,318,297,32,10
+    RTEXT           "受伤",IDC_STATIC,333,310,17,10
+    RTEXT           "射门技术",IDC_STATIC,251,271,32,10
+    RTEXT           "任意球精度",IDC_STATIC,242,284,41,10
+    RTEXT           "弧度",IDC_STATIC,267,297,16,10
+    RTEXT           "头球",IDC_STATIC,267,310,16,10
+    RTEXT           "弹跳",IDC_STATIC,334,193,16,10
+    RTEXT           "技术",IDC_STATIC,334,206,16,10
+    RTEXT           "进攻性",IDC_STATIC,325,219,25,10
+    RTEXT           "精神",IDC_STATIC,334,232,16,10
+    RTEXT           "守门技术",IDC_STATIC,318,245,32,10
+    RTEXT           "配合",IDC_STATIC,334,258,16,10
+    RTEXT           "反应",IDC_STATIC,199,271,16,10
+    RTEXT           "敏捷",IDC_STATIC,199,284,16,10
+    RTEXT           "带球精度",IDC_STATIC,183,297,32,10
+    RTEXT           "带球速度",IDC_STATIC,183,310,32,10
+    RTEXT           "短传精度",IDC_STATIC,251,193,32,10
+    RTEXT           "短传速度",IDC_STATIC,251,206,32,10
+    RTEXT           "长传精度",IDC_STATIC,251,219,32,10
+    RTEXT           "长传速度",IDC_STATIC,251,232,32,10
+    RTEXT           "射门精度",IDC_STATIC,251,245,32,10
+    RTEXT           "射门力量",IDC_STATIC,251,258,32,10
+    RTEXT           "位置",IDC_STATIC,137,271,16,10
+    RTEXT           "综合值",IDC_STATIC,129,284,24,10
+    RTEXT           "擅长边路",IDC_STATIC,121,297,32,10
+    RTEXT           "擅长脚",IDC_STATIC,127,310,26,10
+    RTEXT           "进攻",IDC_STATIC,199,193,16,10
+    RTEXT           "防守",IDC_STATIC,199,206,16,10
+    RTEXT           "平衡",IDC_STATIC,199,219,16,10
+    RTEXT           "体力",IDC_STATIC,199,232,16,10
+    RTEXT           "速度",IDC_STATIC,199,245,16,10
+    RTEXT           "加速",IDC_STATIC,199,258,16,10
+    RTEXT           "特殊技能",IDC_STATIC,110,334,32,10
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME | SS_SUNKEN,110,329,267,1
+    LTEXT           "内斯塔",IDC_STATIC_1,47,301,61,10
+    LTEXT           "意大利",IDC_STATIC_2,47,312,61,10
+    LTEXT           "-",IDC_STATIC_3,47,323,61,10
+    LTEXT           "AC米兰",IDC_STATIC_4,47,334,61,10
+    LTEXT           "NESTA",IDC_STATIC_5,161,193,35,10
+    LTEXT           "34",IDC_STATIC_6,161,206,23,10
+    LTEXT           "189 cm",IDC_STATIC_7,161,219,35,10
+    LTEXT           "79 kg",IDC_STATIC_8,161,232,35,10
+    LTEXT           "3月19日",IDC_STATIC_9,161,245,35,10
+    LTEXT           "水瓶座",IDC_STATIC_10,161,258,35,10
+    LTEXT           "CB",IDC_STATIC_11,161,271,15,10
+    LTEXT           "96",IDC_STATIC_12,161,284,15,10
+    LTEXT           "右边",IDC_STATIC_13,161,297,19,10
+    LTEXT           "右脚",IDC_STATIC_14,161,310,19,10
+    LTEXT           "96",IDC_STATIC_15,223,193,15,10
+    LTEXT           "96",IDC_STATIC_16,223,206,15,10
+    LTEXT           "96",IDC_STATIC_17,223,219,15,10
+    LTEXT           "96",IDC_STATIC_18,223,232,15,10
+    LTEXT           "96",IDC_STATIC_19,223,245,15,10
+    LTEXT           "96",IDC_STATIC_20,223,258,15,10
+    LTEXT           "96",IDC_STATIC_21,223,271,15,10
+    LTEXT           "96",IDC_STATIC_22,223,284,15,10
+    LTEXT           "96",IDC_STATIC_23,223,297,15,10
+    LTEXT           "96",IDC_STATIC_24,223,310,15,10
+    LTEXT           "96",IDC_STATIC_34,291,310,15,10
+    LTEXT           "96",IDC_STATIC_33,291,297,15,10
+    LTEXT           "96",IDC_STATIC_32,291,284,15,10
+    LTEXT           "96",IDC_STATIC_31,291,271,15,10
+    LTEXT           "96",IDC_STATIC_30,291,258,15,10
+    LTEXT           "96",IDC_STATIC_29,291,245,15,10
+    LTEXT           "96",IDC_STATIC_28,291,232,15,10
+    LTEXT           "96",IDC_STATIC_27,291,219,15,10
+    LTEXT           "96",IDC_STATIC_26,291,206,15,10
+    LTEXT           "96",IDC_STATIC_25,291,193,15,10
+    LTEXT           "96",IDC_STATIC_35,358,193,15,10
+    LTEXT           "96",IDC_STATIC_36,358,206,15,10
+    LTEXT           "96",IDC_STATIC_37,358,219,15,10
+    LTEXT           "96",IDC_STATIC_38,358,232,15,10
+    LTEXT           "96",IDC_STATIC_39,358,245,15,10
+    LTEXT           "96",IDC_STATIC_40,358,258,15,10
+    LTEXT           "5",IDC_STATIC_41,358,271,15,10
+    LTEXT           "5",IDC_STATIC_42,358,284,15,10
+    LTEXT           "5",IDC_STATIC_43,358,297,15,10
+    LTEXT           "C",IDC_STATIC_44,358,310,15,10
+    LTEXT           " 重视防守 擅长滑铲 补位高手 后防领袖",IDC_STATIC_45,150,334,227,10
 END
 
 
@@ -368,7 +459,7 @@ BEGIN
         LEFTMARGIN, 7
         RIGHTMARGIN, 377
         TOPMARGIN, 7
-        BOTTOMMARGIN, 369
+        BOTTOMMARGIN, 348
     END
 END
 #endif    // APSTUDIO_INVOKED

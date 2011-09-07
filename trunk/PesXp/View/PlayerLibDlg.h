@@ -33,10 +33,12 @@ private:
     CStatic             m_pictureCtrl;              // 球员头像显示控件
     CPlayerLibHandler*  m_pPlayerLibHandler;        // 球员信息处理
     LOGFONT             m_boldFont;                 // 球员数值使用粗体显示
+	CToolTipCtrl		m_ttCtrl;					// 提示信息控件
 
 public:
     virtual BOOL OnInitDialog();
     afx_msg void OnTvnSelchangedPlayerLibTree(NMHDR *pNMHDR, LRESULT *pResult);
     afx_msg void OnNMDblclkPlayerLibList(NMHDR *pNMHDR, LRESULT *pResult);
     afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	afx_msg BOOL PreTranslateMessage(MSG* pMsg);
 };

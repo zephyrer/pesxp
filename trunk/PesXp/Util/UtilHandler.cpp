@@ -89,3 +89,14 @@ bool CUtilHandler::IsValidEmail(CString strEmail)
 
     return true;
 }
+
+CString CUtilHandler::GetAppPath() 
+{	
+	CString  sPath; 
+	GetModuleFileName(NULL, sPath.GetBufferSetLength(MAX_PATH + 1) ,MAX_PATH); 
+	sPath.ReleaseBuffer(); 
+	 
+	int nPos = sPath.ReverseFind('\\'); 
+	sPath = sPath.Left(nPos); 
+	return sPath; 
+}

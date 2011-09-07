@@ -99,11 +99,11 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
+			OutputDirectory=".\Bin"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
 			UseOfMFC="2"
-			CharacterSet="1"
+			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
 			<Tool
@@ -128,12 +128,13 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
+				AdditionalIncludeDirectories=".\;.\View;.\res;.\Model;.\Controller;.\Util;.\Lib\sqlite3\include"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG"
 				MinimalRebuild="false"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				UsePrecompiledHeader="2"
-				WarningLevel="3"
+				WarningLevel="4"
 				DebugInformationFormat="3"
 			/>
 			<Tool
@@ -150,6 +151,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				AdditionalDependencies=".\Lib\USkin.lib"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -228,6 +230,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\View\PlayerSearchDlg.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\View\SubmitScoreDlg.cpp"
 					>
 				</File>
@@ -299,6 +305,10 @@
 				</File>
 				<File
 					RelativePath=".\View\PlayerLibDlg.h"
+					>
+				</File>
+				<File
+					RelativePath=".\View\PlayerSearchDlg.h"
 					>
 				</File>
 				<File

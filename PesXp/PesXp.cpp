@@ -6,6 +6,7 @@
 #include "LoginDlg.h"
 #include "UserCenterDlg.h"
 #include "PlayerLibDlg.h"
+#include "UtilHandler.h"
 #include "USkin.h"      // 加载界面库
 
 #ifdef _DEBUG
@@ -65,7 +66,9 @@ BOOL CPesXpApp::InitInstance()
     // 加载USkin界面库
     // TODO USkin界面库不支持unicode编码 考虑以后更换界面库
     //
-    USkinInit(NULL, NULL, _T("..\\res\\ChromeXP.msstyles"));
+	CUtilHandler* pUtilHandler = CUtilHandler::GetInstance();
+	CString appPath = pUtilHandler->GetAppPath();
+    USkinInit(NULL, NULL, appPath + _T("\\skin\\pesxp.msstyles"));
 
     while (true)
     {

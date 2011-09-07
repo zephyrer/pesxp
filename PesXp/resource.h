@@ -11,6 +11,7 @@
 #define IDD_SUBMIT_SCORE_DIALOG         131
 #define IDD_AGREE_SCORE_DIALOG          133
 #define IDD_PLAYER_LIB_DIALOG           135
+#define IDD_PLAYER_SEARCH_DIALOG        136
 #define IDC_LOGIN_BUTTON_LOGIN          1000
 #define IDC_LOGIN_BUTTON_REGISTER       1001
 #define IDC_LOGIN_EDIT_USER_NAME        1002
@@ -186,14 +187,87 @@
 #define IDC_STATIC_43                   1171
 #define IDC_STATIC_44                   1172
 #define IDC_STATIC_45                   1173
+#define IDC_CHECK1                      1174
+#define IDC_CHECK_NAME                  1174
+#define IDC_CHECK2                      1175
+#define IDC_CHECK_WE_NAME               1175
+#define IDC_CHECK3                      1176
+#define IDC_CHECK_COUNTRY               1176
+#define IDC_CHECK4                      1177
+#define IDC_CHECK_CLUB                  1177
+#define IDC_CHECK5                      1178
+#define IDC_CHECK_POS                   1178
+#define IDC_CHECK6                      1179
+#define IDC_CHECK_AGE                   1179
+#define IDC_CHECK7                      1180
+#define IDC_CHECK_FOOT                  1180
+#define IDC_CHECK8                      1181
+#define IDC_CHECK_VALUE                 1181
+#define IDC_CHECK9                      1182
+#define IDC_CHECK_HEIGHT                1182
+#define IDC_CHECK10                     1183
+#define IDC_CHECK_WEIGHT                1183
+#define IDC_CHECK11                     1184
+#define IDC_CHECK_BIRTH                 1184
+#define IDC_CHECK12                     1185
+#define IDC_CHECK_CONS                  1185
+#define IDC_BUTTON1                     1186
+#define IDC_BUTTON_SEARCH               1186
+#define IDC_EDIT1                       1187
+#define IDC_EDIT_NAME                   1187
+#define IDC_EDIT2                       1188
+#define IDC_EDIT_WE_NAME                1188
+#define IDC_EDIT3                       1189
+#define IDC_CHECK_SIDE                  1189
+#define IDC_EDIT4                       1190
+#define IDC_DATETIMEPICKER1             1198
+#define IDC_DATETIMEPICKER_BIRTH        1198
+#define IDC_EDIT5                       1200
+#define IDC_SPIN2                       1201
+#define IDC_SPIN3                       1202
+#define IDC_SPIN4                       1203
+#define IDC_SPIN5                       1204
+#define IDC_SPIN6                       1205
+#define IDC_SPIN7                       1206
+#define IDC_SPIN8                       1207
+#define IDC_SPIN_VALUE_MIN              1207
+#define IDC_SPIN9                       1208
+#define IDC_SPIN_VALUE_MAX              1208
+#define IDC_EDIT6                       1209
+#define IDC_SPIN_AGE_MIN                1209
+#define IDC_EDIT7                       1210
+#define IDC_SPIN_AGE_MAX                1210
+#define IDC_EDIT8                       1211
+#define IDC_SPIN_WEIGHT_MIN             1211
+#define IDC_EDIT9                       1212
+#define IDC_EDITIDC_EDITIDC_EDIT_VALUE_MIN 1212
+#define IDC_EDITIDC_EDITIDC_EDIT_VALUE_MAX 1213
+#define IDC_EDITIDC_EDIT_AGE_MIN        1214
+#define IDC_COMBO2                      1215
+#define IDC_COMBO_CONTINET              1215
+#define IDC_EDITIDC_EDITIDC_EDIT_AGE_MAX 1216
+#define IDC_SPIN_WEIGHT_MAX             1217
+#define IDC_EDIT_WEIGHT_MIN             1218
+#define IDC_EDITIDC_EDIT_WEIGHT_MAX     1219
+#define IDC_SPIN_HEIGHT_MIN             1220
+#define IDC_SPIN_HEIGHT_MAX             1221
+#define IDC_EDIT_HEIGHT_MIN             1222
+#define IDC_COMBO_COUNTRY               1223
+#define IDC_COMBO_CONTIENT_CLUB         1224
+#define IDC_COMBO_CLUB                  1226
+#define IDC_COMBO_POS                   1227
+#define IDC_COMBO_CONS                  1228
+#define IDC_COMBO_FOOT                  1229
+#define IDC_EDIT_HEIGHT_MAX             1230
+#define IDC_COMBO_FOOT_SIDE             1231
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        136
+#define _APS_NEXT_RESOURCE_VALUE        137
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1174
+#define _APS_NEXT_CONTROL_VALUE         1216
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

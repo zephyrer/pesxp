@@ -10,6 +10,7 @@
 #include "LeagueHonorPage.h"
 #include "LeagueMyTeamPage.h"
 #include "LeagueTeamRankPage.h"
+#include "LeagueMarketPage.h"
 
 // CUserCenterDlg dialog
 
@@ -30,7 +31,8 @@ public:
                            bool isShowTeamRank = true,
                            bool isShowGoalRank = true,
                            bool isShowAssitantRank = true,
-                           bool isShowHonor = true);
+                           bool isShowHonor = true,
+                           bool isShowMarket = true);
 
 // Dialog Data
     enum { IDD = IDD_USER_CENTER_DIALOG };
@@ -57,6 +59,7 @@ private:
     CLeagueMyTeamPage   *m_pDlgLeagueMyTeamPage;    // 联赛我的球队信息
     CLeagueTeamRankPage *m_pDlgLeagueTeamRankPage;  // 联赛球队排行榜信息
     CLeagueHonorPage    *m_pDlgLeagueHonorPage;     // 联赛荣耀大殿信息
+    CLeagueMarketPage   *m_pDlgLeagueMarketPage;    // 联赛转会市场信息
     CUtilHandler        *m_pUtilHandler;             // 公共函数类
 public:
     afx_msg void OnShowWindow(BOOL bShow, UINT nStatus);

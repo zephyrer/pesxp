@@ -242,6 +242,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\View\LeagueMarketPage.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\View\LeagueMyTeamPage.cpp"
 					>
 				</File>
@@ -345,6 +349,10 @@
 				</File>
 				<File
 					RelativePath=".\View\LeagueInfoPage.h"
+					>
+				</File>
+				<File
+					RelativePath=".\View\LeagueMarketPage.h"
 					>
 				</File>
 				<File

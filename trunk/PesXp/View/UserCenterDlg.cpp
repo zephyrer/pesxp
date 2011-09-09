@@ -5,7 +5,6 @@
 #include "PesXp.h"
 #include "UserCenterDlg.h"
 
-
 // CUserCenterDlg dialog
 
 IMPLEMENT_DYNAMIC(CUserCenterDlg, CDialog)
@@ -37,13 +36,32 @@ CUserCenterDlg::CUserCenterDlg(CWnd* pParent /*=NULL*/)
     , m_strLeagueInfo(_T("2011-03-28"))
     , m_strLeagueSignCount(_T("8"))
 {
-    m_isDefaultDlg      = true;
-    m_pDlgSubmitScore   = NULL;
-    m_pDlgAgreeScore    = NULL;
+    m_isDefaultDlg              = true;
+    m_pDlgSubmitScore           = NULL;
+    m_pDlgAgreeScore            = NULL;
+    m_pDlgLeagueSheet           = NULL;
+    m_pDlgLeagueInfoPage        = NULL;
+    m_pDlgLeagueCalendarPage    = NULL;
+    m_pDlgLeagueGoalPage        = NULL;
+    m_pDlgLeagueAssitantPage    = NULL;
+    m_pDlgLeagueMyTeamPage      = NULL;
+    m_pDlgLeagueTeamRankPage    = NULL;
+    m_pDlgLeagueHonorPage       = NULL;
+    m_pUtilHandler              = CUtilHandler::GetInstance();
 }
 
 CUserCenterDlg::~CUserCenterDlg()
 {
+    m_pUtilHandler->FreeMemory(m_pDlgSubmitScore);
+    m_pUtilHandler->FreeMemory(m_pDlgAgreeScore);
+    m_pUtilHandler->FreeMemory(m_pDlgLeagueSheet);
+    m_pUtilHandler->FreeMemory(m_pDlgLeagueInfoPage);
+    m_pUtilHandler->FreeMemory(m_pDlgLeagueCalendarPage);
+    m_pUtilHandler->FreeMemory(m_pDlgLeagueGoalPage);
+    m_pUtilHandler->FreeMemory(m_pDlgLeagueAssitantPage);
+    m_pUtilHandler->FreeMemory(m_pDlgLeagueMyTeamPage);
+    m_pUtilHandler->FreeMemory(m_pDlgLeagueTeamRankPage);
+    m_pUtilHandler->FreeMemory(m_pDlgLeagueHonorPage);
 }
 
 void CUserCenterDlg::DoDataExchange(CDataExchange* pDX)
@@ -243,7 +261,7 @@ void CUserCenterDlg::OnBnClickedButtonAgreeScore()
 //
 void CUserCenterDlg::OnBnClickedButtonEnterMyLeague()
 {
-    // TODO: Add your control notification handler code here
+    ShowLeagueInfoDlg();
 }
 
 //
@@ -251,7 +269,7 @@ void CUserCenterDlg::OnBnClickedButtonEnterMyLeague()
 //
 void CUserCenterDlg::OnBnClickedButtonWatchLeague()
 {
-    // TODO: Add your control notification handler code here
+    ShowLeagueInfoDlg(true, false);
 }
 
 //
@@ -259,5 +277,152 @@ void CUserCenterDlg::OnBnClickedButtonWatchLeague()
 //
 void CUserCenterDlg::OnBnClickedButtonLeagueSign()
 {
-    // TODO: Add your control notification handler code here
+    ShowLeagueInfoDlg(true, false, false, false, false, false, true);
+}
+
+//
+// 显示联赛信息对话框
+//
+void CUserCenterDlg::ShowLeagueInfoDlg(bool isShowJoinButton,
+                                       bool isShowMyTeam,
+                                       bool isShowCalendar,
+                                       bool isShowTeamRank,
+                                       bool isShowGoalRank,
+                                       bool isShowAssitantRank,
+                                       bool isShowHonor)
+{
+    if (m_pDlgLeagueSheet == NULL)
+    {
+        m_pDlgLeagueSheet           = new CPropertySheet(_T("联赛信息"));
+
+        m_pDlgLeagueInfoPage        = new CLeagueInfoPage();
+        m_pDlgLeagueSheet->AddPage(m_pDlgLeagueInfoPage);
+        m_pDlgLeagueInfoPage->m_psp.dwFlags &= ~(PSP_HASHELP);
+
+        if (isShowMyTeam)
+        {
+            m_pDlgLeagueMyTeamPage = new CLeagueMyTeamPage();
+            m_pDlgLeagueSheet->AddPage(m_pDlgLeagueMyTeamPage);
+            m_pDlgLeagueMyTeamPage->m_psp.dwFlags &= ~(PSP_HASHELP);
+        }
+
+        if (isShowCalendar)
+        {
+            m_pDlgLeagueCalendarPage = new CLeagueCalendarPage();
+            m_pDlgLeagueSheet->AddPage(m_pDlgLeagueCalendarPage);
+            m_pDlgLeagueCalendarPage->m_psp.dwFlags &= ~(PSP_HASHELP);
+        }
+
+        if (isShowTeamRank)
+        {
+            m_pDlgLeagueTeamRankPage = new CLeagueTeamRankPage();
+            m_pDlgLeagueSheet->AddPage(m_pDlgLeagueTeamRankPage);
+            m_pDlgLeagueTeamRankPage->m_psp.dwFlags &= ~(PSP_HASHELP);
+        }
+
+        if (isShowGoalRank)
+        {
+            m_pDlgLeagueGoalPage = new CLeagueGoalPage();
+            m_pDlgLeagueSheet->AddPage(m_pDlgLeagueGoalPage);
+            m_pDlgLeagueGoalPage->m_psp.dwFlags &= ~(PSP_HASHELP);
+        }
+
+        if (isShowAssitantRank)
+        {
+            m_pDlgLeagueAssitantPage = new CLeagueAssitantPage();
+            m_pDlgLeagueSheet->AddPage(m_pDlgLeagueAssitantPage);
+            m_pDlgLeagueAssitantPage->m_psp.dwFlags &= ~(PSP_HASHELP);
+        }
+
+        if (isShowHonor)
+        {
+            m_pDlgLeagueHonorPage = new CLeagueHonorPage();
+            m_pDlgLeagueSheet->AddPage(m_pDlgLeagueHonorPage);
+            m_pDlgLeagueHonorPage->m_psp.dwFlags &= ~(PSP_HASHELP);
+        }
+
+        m_pDlgLeagueSheet->m_psh.dwFlags        |= PSH_NOAPPLYNOW;
+        m_pDlgLeagueSheet->m_psh.dwFlags        &= ~(PSH_HASHELP);
+    }
+
+    m_pDlgLeagueInfoPage->ShowJoinButton(isShowJoinButton);
+
+    if (!isShowMyTeam && m_pDlgLeagueMyTeamPage)
+    {
+        m_pDlgLeagueSheet->RemovePage(m_pDlgLeagueMyTeamPage);
+        delete m_pDlgLeagueMyTeamPage;
+        m_pDlgLeagueMyTeamPage = NULL;
+    }
+    else if (isShowMyTeam && m_pDlgLeagueMyTeamPage == NULL)
+    {
+        m_pDlgLeagueMyTeamPage = new CLeagueMyTeamPage();
+        m_pDlgLeagueSheet->AddPage(m_pDlgLeagueMyTeamPage);
+        m_pDlgLeagueMyTeamPage->m_psp.dwFlags &= ~(PSP_HASHELP);
+    }
+
+    if (!isShowCalendar && m_pDlgLeagueCalendarPage)
+    {
+        m_pDlgLeagueSheet->RemovePage(m_pDlgLeagueCalendarPage);
+        delete m_pDlgLeagueCalendarPage;
+        m_pDlgLeagueCalendarPage = NULL;
+    }
+    else if (isShowCalendar && m_pDlgLeagueCalendarPage == NULL)
+    {
+        m_pDlgLeagueCalendarPage = new CLeagueCalendarPage();
+        m_pDlgLeagueSheet->AddPage(m_pDlgLeagueCalendarPage);
+        m_pDlgLeagueCalendarPage->m_psp.dwFlags &= ~(PSP_HASHELP);
+    }
+
+    if (!isShowTeamRank && m_pDlgLeagueTeamRankPage)
+    {
+        m_pDlgLeagueSheet->RemovePage(m_pDlgLeagueTeamRankPage);
+        delete m_pDlgLeagueTeamRankPage;
+        m_pDlgLeagueTeamRankPage = NULL;
+    }
+    else if (isShowTeamRank && m_pDlgLeagueTeamRankPage == NULL)
+    {
+        m_pDlgLeagueTeamRankPage = new CLeagueTeamRankPage();
+        m_pDlgLeagueSheet->AddPage(m_pDlgLeagueTeamRankPage);
+        m_pDlgLeagueTeamRankPage->m_psp.dwFlags &= ~(PSP_HASHELP);
+    }
+
+    if (!isShowGoalRank && m_pDlgLeagueGoalPage)
+    {
+        m_pDlgLeagueSheet->RemovePage(m_pDlgLeagueGoalPage);
+        delete m_pDlgLeagueGoalPage;
+        m_pDlgLeagueGoalPage = NULL;
+    }
+    else if (isShowGoalRank && m_pDlgLeagueGoalPage == NULL)
+    {
+        m_pDlgLeagueGoalPage = new CLeagueGoalPage();
+        m_pDlgLeagueSheet->AddPage(m_pDlgLeagueGoalPage);
+        m_pDlgLeagueGoalPage->m_psp.dwFlags &= ~(PSP_HASHELP);
+    }
+
+    if (!isShowAssitantRank && m_pDlgLeagueAssitantPage)
+    {
+        m_pDlgLeagueSheet->RemovePage(m_pDlgLeagueAssitantPage);
+        delete m_pDlgLeagueAssitantPage;
+        m_pDlgLeagueAssitantPage = NULL;
+    }
+    else if (isShowAssitantRank && m_pDlgLeagueAssitantPage == NULL)
+    {
+        m_pDlgLeagueAssitantPage = new CLeagueAssitantPage();
+        m_pDlgLeagueSheet->AddPage(m_pDlgLeagueAssitantPage);
+        m_pDlgLeagueAssitantPage->m_psp.dwFlags &= ~(PSP_HASHELP);
+    }
+
+    if (!isShowHonor && m_pDlgLeagueHonorPage)
+    {
+        m_pDlgLeagueSheet->RemovePage(m_pDlgLeagueHonorPage);
+        delete m_pDlgLeagueHonorPage;
+        m_pDlgLeagueHonorPage = NULL;
+    }
+    else if (isShowHonor && m_pDlgLeagueHonorPage == NULL)
+    {
+        m_pDlgLeagueHonorPage = new CLeagueHonorPage();
+        m_pDlgLeagueSheet->AddPage(m_pDlgLeagueHonorPage);
+        m_pDlgLeagueHonorPage->m_psp.dwFlags &= ~(PSP_HASHELP);
+    }
+    m_pDlgLeagueSheet->DoModal();
 }

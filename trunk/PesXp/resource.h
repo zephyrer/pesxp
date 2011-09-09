@@ -12,6 +12,14 @@
 #define IDD_AGREE_SCORE_DIALOG          133
 #define IDD_PLAYER_LIB_DIALOG           135
 #define IDD_PLAYER_SEARCH_DIALOG        136
+#define IDD_LEAGUE_INFO_DIALOG          137
+#define IDD_LEAGUE_CALENDAR_DIALOG      138
+#define IDD_LEAGUE_MY_TEAM_DIALOG       139
+#define IDD_LEAGUE_TEAM_RANK_DIALOG     140
+#define IDD_LEAGUE_ASSITANT_RANK_DIALOG 141
+#define IDD_LEAGUE_GOAL_RANK_DIALOG     142
+#define IDD_LEAGUE_MY_TEAM_DIALOG4      143
+#define IDD_LEAGUE_HONOR_DIALOG         143
 #define IDC_LOGIN_BUTTON_LOGIN          1000
 #define IDC_LOGIN_BUTTON_REGISTER       1001
 #define IDC_LOGIN_EDIT_USER_NAME        1002
@@ -213,6 +221,7 @@
 #define IDC_CHECK_CONS                  1185
 #define IDC_BUTTON1                     1186
 #define IDC_BUTTON_SEARCH               1186
+#define IDC_JOIN_LEAGUE                 1186
 #define IDC_EDIT1                       1187
 #define IDC_EDIT_NAME                   1187
 #define IDC_EDIT2                       1188
@@ -247,16 +256,28 @@
 #define IDC_COMBO_CONTINET              1215
 #define IDC_EDITIDC_EDITIDC_EDIT_AGE_MAX 1216
 #define IDC_SPIN_WEIGHT_MAX             1217
+#define IDC_LEAGUE_INFO_PROGRESS_TEXT   1217
 #define IDC_EDIT_WEIGHT_MIN             1218
+#define IDC_LEAGUE_INFO_START_TEXT      1218
 #define IDC_EDITIDC_EDIT_WEIGHT_MAX     1219
+#define IDC_LEAGUE_INFO_STOP_TEXT       1219
 #define IDC_SPIN_HEIGHT_MIN             1220
+#define IDC_LEAGUE_INFO_POST_TEXT       1220
 #define IDC_SPIN_HEIGHT_MAX             1221
+#define IDC_LEAGUE_INFO_TEAM_COUNT_TEXT 1221
 #define IDC_EDIT_HEIGHT_MIN             1222
+#define IDC_LEAGUE_INFO_MATCH_COUNT_TEXT 1222
 #define IDC_COMBO_COUNTRY               1223
+#define IDC_LEAGUE_INFO_GOAL_TEXT       1223
 #define IDC_COMBO_CONTIENT_CLUB         1224
+#define IDC_LEAGUE_INFO_ASSITANT_TEXT   1224
+#define IDC_LEAGUE_INFO_FIRST_TEXT      1225
 #define IDC_COMBO_CLUB                  1226
+#define IDC_LEAGUE_INFO_LAST_TEXT       1226
 #define IDC_COMBO_POS                   1227
+#define IDC_LEAGUE_INFO_RED_TEXT        1227
 #define IDC_COMBO_CONS                  1228
+#define IDC_LEAGUE_INFO_YELLOW_TEXT     1228
 #define IDC_COMBO_FOOT                  1229
 #define IDC_EDIT_HEIGHT_MAX             1230
 #define IDC_COMBO_FOOT_SIDE             1231
@@ -265,9 +286,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        137
+#define _APS_NEXT_RESOURCE_VALUE        140
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1216
+#define _APS_NEXT_CONTROL_VALUE         1229
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

@@ -5,7 +5,6 @@
 #include "PesXp.h"
 #include "LeagueInfoPage.h"
 
-
 // CLeagueInfoPage 对话框
 
 IMPLEMENT_DYNAMIC(CLeagueInfoPage, CPropertyPage)
@@ -53,6 +52,16 @@ BOOL CLeagueInfoPage::OnInitDialog()
     }
 
     m_bShowJoinButton = false;
+
+    //
+    // 去掉确定和取消按钮
+    //
+    CPropertySheet *pPropertySheet = (CPropertySheet *)GetParent();
+    pWnd = pPropertySheet->GetDlgItem(IDCANCEL);
+    //pWnd->ShowWindow(SW_HIDE);
+    pWnd->SetWindowText(_T("关闭"));
+    pWnd = pPropertySheet->GetDlgItem(IDOK);
+    pWnd->ShowWindow(SW_HIDE);
 
     return TRUE;  // return TRUE unless you set the focus to a control
     // 异常: OCX 属性页应返回 FALSE

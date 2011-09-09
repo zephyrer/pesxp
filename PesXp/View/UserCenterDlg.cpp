@@ -47,6 +47,7 @@ CUserCenterDlg::CUserCenterDlg(CWnd* pParent /*=NULL*/)
     m_pDlgLeagueMyTeamPage      = NULL;
     m_pDlgLeagueTeamRankPage    = NULL;
     m_pDlgLeagueHonorPage       = NULL;
+    m_pDlgLeagueMarketPage      = NULL;
     m_pUtilHandler              = CUtilHandler::GetInstance();
 }
 
@@ -62,6 +63,7 @@ CUserCenterDlg::~CUserCenterDlg()
     m_pUtilHandler->FreeMemory(m_pDlgLeagueMyTeamPage);
     m_pUtilHandler->FreeMemory(m_pDlgLeagueTeamRankPage);
     m_pUtilHandler->FreeMemory(m_pDlgLeagueHonorPage);
+    m_pUtilHandler->FreeMemory(m_pDlgLeagueMarketPage);
 }
 
 void CUserCenterDlg::DoDataExchange(CDataExchange* pDX)
@@ -277,7 +279,7 @@ void CUserCenterDlg::OnBnClickedButtonWatchLeague()
 //
 void CUserCenterDlg::OnBnClickedButtonLeagueSign()
 {
-    ShowLeagueInfoDlg(true, false, false, false, false, false, true);
+    ShowLeagueInfoDlg(true, false, false, false, false, false, true, false);
 }
 
 //
@@ -289,7 +291,8 @@ void CUserCenterDlg::ShowLeagueInfoDlg(bool isShowJoinButton,
                                        bool isShowTeamRank,
                                        bool isShowGoalRank,
                                        bool isShowAssitantRank,
-                                       bool isShowHonor)
+                                       bool isShowHonor,
+                                       bool isShowMarket)
 {
     if (m_pDlgLeagueSheet == NULL)
     {
@@ -339,6 +342,13 @@ void CUserCenterDlg::ShowLeagueInfoDlg(bool isShowJoinButton,
             m_pDlgLeagueHonorPage = new CLeagueHonorPage();
             m_pDlgLeagueSheet->AddPage(m_pDlgLeagueHonorPage);
             m_pDlgLeagueHonorPage->m_psp.dwFlags &= ~(PSP_HASHELP);
+        }
+
+        if (isShowMarket)
+        {
+            m_pDlgLeagueMarketPage = new CLeagueMarketPage();
+            m_pDlgLeagueSheet->AddPage(m_pDlgLeagueMarketPage);
+            m_pDlgLeagueMarketPage->m_psp.dwFlags &= ~(PSP_HASHELP);
         }
 
         m_pDlgLeagueSheet->m_psh.dwFlags        |= PSH_NOAPPLYNOW;
@@ -423,6 +433,19 @@ void CUserCenterDlg::ShowLeagueInfoDlg(bool isShowJoinButton,
         m_pDlgLeagueHonorPage = new CLeagueHonorPage();
         m_pDlgLeagueSheet->AddPage(m_pDlgLeagueHonorPage);
         m_pDlgLeagueHonorPage->m_psp.dwFlags &= ~(PSP_HASHELP);
+    }
+
+    if (!isShowMarket && m_pDlgLeagueMarketPage)
+    {
+        m_pDlgLeagueSheet->RemovePage(m_pDlgLeagueMarketPage);
+        delete m_pDlgLeagueMarketPage;
+        m_pDlgLeagueMarketPage = NULL;
+    }
+    else if (isShowMarket && m_pDlgLeagueMarketPage == NULL)
+    {
+        m_pDlgLeagueMarketPage = new CLeagueMarketPage();
+        m_pDlgLeagueSheet->AddPage(m_pDlgLeagueMarketPage);
+        m_pDlgLeagueMarketPage->m_psp.dwFlags &= ~(PSP_HASHELP);
     }
     m_pDlgLeagueSheet->DoModal();
 }

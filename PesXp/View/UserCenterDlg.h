@@ -1,7 +1,15 @@
 #pragma once
 #include "afxwin.h"
+#include "UtilHandler.h"
 #include "SubmitScoreDlg.h"
 #include "AgreeScoreDlg.h"
+#include "LeagueInfoPage.h"
+#include "LeagueCalendarPage.h"
+#include "LeagueAssitantPage.h"
+#include "LeagueGoalPage.h"
+#include "LeagueHonorPage.h"
+#include "LeagueMyTeamPage.h"
+#include "LeagueTeamRankPage.h"
 
 // CUserCenterDlg dialog
 
@@ -12,6 +20,17 @@ class CUserCenterDlg : public CDialog
 public:
     CUserCenterDlg(CWnd* pParent = NULL);   // standard constructor
     virtual ~CUserCenterDlg();
+    
+    //
+    // 显示联赛信息对话框
+    //
+    void ShowLeagueInfoDlg(bool isShowJoinButton = false,
+                           bool isShowMyTeam = true,
+                           bool isShowCalendar = true,
+                           bool isShowTeamRank = true,
+                           bool isShowGoalRank = true,
+                           bool isShowAssitantRank = true,
+                           bool isShowHonor = true);
 
 // Dialog Data
     enum { IDD = IDD_USER_CENTER_DIALOG };
@@ -24,12 +43,21 @@ public:
     afx_msg void OnBnClickedButtonLeagueDoing();
 
 private:
-    CRect            m_rectLarge;            // 完整对话框的大小
-    CRect            m_rectSmall;            // 默认对话框的大小
-    CRect            m_rectSeparator;        // 完整与默认对话框的分隔线
-    bool             m_isDefaultDlg;         // 当前是否显示默认对话框
-    CSubmitScoreDlg* m_pDlgSubmitScore;      // 上报比分对话框
-    CAgreeScoreDlg*  m_pDlgAgreeScore;       // 确认比分对话框
+    CRect               m_rectLarge;                // 完整对话框的大小
+    CRect               m_rectSmall;                // 默认对话框的大小
+    CRect               m_rectSeparator;            // 完整与默认对话框的分隔线
+    bool                m_isDefaultDlg;             // 当前是否显示默认对话框
+    CSubmitScoreDlg     *m_pDlgSubmitScore;         // 上报比分对话框
+    CAgreeScoreDlg      *m_pDlgAgreeScore;          // 确认比分对话框
+    CPropertySheet      *m_pDlgLeagueSheet;         // 联赛信息对话框
+    CLeagueInfoPage     *m_pDlgLeagueInfoPage;      // 联赛基本信息
+    CLeagueCalendarPage *m_pDlgLeagueCalendarPage;  // 联赛赛程信息
+    CLeagueGoalPage     *m_pDlgLeagueGoalPage;      // 联赛进球榜信息
+    CLeagueAssitantPage *m_pDlgLeagueAssitantPage;  // 联赛助攻榜信息
+    CLeagueMyTeamPage   *m_pDlgLeagueMyTeamPage;    // 联赛我的球队信息
+    CLeagueTeamRankPage *m_pDlgLeagueTeamRankPage;  // 联赛球队排行榜信息
+    CLeagueHonorPage    *m_pDlgLeagueHonorPage;     // 联赛荣耀大殿信息
+    CUtilHandler        *m_pUtilHandler;             // 公共函数类
 public:
     afx_msg void OnShowWindow(BOOL bShow, UINT nStatus);
     afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);

@@ -222,6 +222,34 @@
 					>
 				</File>
 				<File
+					RelativePath=".\View\LeagueAssitantPage.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\View\LeagueCalendarPage.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\View\LeagueGoalPage.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\View\LeagueHonorPage.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\View\LeagueInfoPage.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\View\LeagueMyTeamPage.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\View\LeagueTeamRankPage.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\View\LoginDlg.cpp"
 					>
 				</File>
@@ -297,6 +325,34 @@
 				>
 				<File
 					RelativePath=".\View\AgreeScoreDlg.h"
+					>
+				</File>
+				<File
+					RelativePath=".\View\LeagueAssitantPage.h"
+					>
+				</File>
+				<File
+					RelativePath=".\View\LeagueCalendarPage.h"
+					>
+				</File>
+				<File
+					RelativePath=".\View\LeagueGoalPage.h"
+					>
+				</File>
+				<File
+					RelativePath=".\View\LeagueHonorPage.h"
+					>
+				</File>
+				<File
+					RelativePath=".\View\LeagueInfoPage.h"
+					>
+				</File>
+				<File
+					RelativePath=".\View\LeagueMyTeamPage.h"
+					>
+				</File>
+				<File
+					RelativePath=".\View\LeagueTeamRankPage.h"
 					>
 				</File>
 				<File

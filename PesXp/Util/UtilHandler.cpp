@@ -91,12 +91,21 @@ bool CUtilHandler::IsValidEmail(CString strEmail)
 }
 
 CString CUtilHandler::GetAppPath() 
-{	
-	CString  sPath; 
-	GetModuleFileName(NULL, sPath.GetBufferSetLength(MAX_PATH + 1) ,MAX_PATH); 
-	sPath.ReleaseBuffer(); 
-	 
-	int nPos = sPath.ReverseFind('\\'); 
-	sPath = sPath.Left(nPos); 
-	return sPath; 
+{
+    CString  sPath; 
+    GetModuleFileName(NULL, sPath.GetBufferSetLength(MAX_PATH + 1) ,MAX_PATH); 
+    sPath.ReleaseBuffer(); 
+     
+    int nPos = sPath.ReverseFind('\\'); 
+    sPath = sPath.Left(nPos); 
+    return sPath; 
+}
+
+void CUtilHandler::FreeMemory(void *pMemory)
+{
+    if (pMemory)
+    {
+        delete pMemory;
+        pMemory = NULL;
+    }
 }

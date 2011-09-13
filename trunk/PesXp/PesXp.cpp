@@ -5,7 +5,6 @@
 #include "PesXp.h"
 #include "LoginDlg.h"
 #include "UserCenterDlg.h"
-#include "PlayerLibDlg.h"
 #include "UtilHandler.h"
 #include "USkin.h"      // ¼ÓÔØ½çÃæ¿â
 
@@ -83,8 +82,6 @@ BOOL CPesXpApp::InitInstance()
         CUserCenterDlg* pUserCenterDlg = new CUserCenterDlg();
 //        m_pMainWnd = pUserCenterDlg;
         pUserCenterDlg->DoModal();
-        //CPlayerLibDlg* pPlayerLibDlg = new CPlayerLibDlg();
-        //pPlayerLibDlg->DoModal();
 
         break;
     }

@@ -99,12 +99,12 @@ BOOL CPlayerLibDlg::OnInitDialog()
     m_listCtrl.InsertColumn( 3, _T("位置"), LVCFMT_LEFT, 40);
     m_listCtrl.InsertColumn( 4, _T("综合"), LVCFMT_LEFT, 40);
 
-	//
-	// 设置提示信息控件可用
-	//
-	EnableToolTips(TRUE); 
-	m_ttCtrl.Create(this); 
-	m_ttCtrl.Activate(TRUE);
+    //
+    // 设置提示信息控件可用
+    //
+    EnableToolTips(TRUE); 
+    m_ttCtrl.Create(this); 
+    m_ttCtrl.Activate(TRUE);
     
     if (!m_pPlayerLibHandler)
     {
@@ -113,9 +113,9 @@ BOOL CPlayerLibDlg::OnInitDialog()
     m_pPlayerLibHandler->initContinents();
     m_pPlayerLibHandler->initTeams();
 
-	//
-	// 设置粗体字体
-	//
+    //
+    // 设置粗体字体
+    //
     CWnd* pWnd   = GetDlgItem(IDC_STATIC_12);
     CFont* pFont = pWnd->GetFont(); 
     pFont-> GetLogFont(&m_boldFont);
@@ -138,22 +138,21 @@ void CPlayerLibDlg::OnTvnSelchangedPlayerLibTree(NMHDR *pNMHDR, LRESULT *pResult
     // 获得选项句柄
     //
     HTREEITEM select_htem = m_treeCtrl.GetSelectedItem();
-	CString team_name     = m_treeCtrl.GetItemText(select_htem);
-	if (team_name == "自定义搜索")
-	{
-		//
-		// 弹出自定义条件搜索模态对话框
-		//
-		CPlayerSearchDlg playerSearchDlg;
-		playerSearchDlg.setPlayerLibHandler(m_pPlayerLibHandler);
-		playerSearchDlg.DoModal();
-		if (!m_isShowMidWnd)
-		{
-			SetWindowPos(NULL, 0, 0, m_rectMid.Width(), m_rectMid.Height(), SWP_NOMOVE | SWP_NOZORDER);
-			m_isShowMidWnd = true;
-		}
-		return;
-	}
+    CString team_name     = m_treeCtrl.GetItemText(select_htem);
+    if (team_name == "自定义搜索")
+    {
+        //
+        // 弹出自定义条件搜索模态对话框
+        //
+        CPlayerSearchDlg playerSearchDlg;
+        playerSearchDlg.setPlayerLibHandler(m_pPlayerLibHandler);
+        if (playerSearchDlg.DoModal() == IDOK && !m_isShowMidWnd)
+        {
+            SetWindowPos(NULL, 0, 0, m_rectMid.Width(), m_rectMid.Height(), SWP_NOMOVE | SWP_NOZORDER);
+            m_isShowMidWnd = true;
+        }
+        return;
+    }
     //
     // 如果选择根选项则不处理
     //
@@ -220,46 +219,46 @@ HBRUSH CPlayerLibDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
     {
         COLORREF rgb  = 0;
         CString strVal = "";
-		pWnd->GetWindowText(strVal);
-		if (strVal[0] >= 'A' || strVal[0] >= 'D')
-		{
-			if (strVal[0] == 'A')
-			{
-				rgb = RGB(255, 0, 0);
-			}
-			else if (strVal[0] == 'B')
-			{
-				rgb = RGB(255, 180, 0);
-			}
-		}
-		else
-		{
-			int intVal = atoi(strVal);
-			if (intVal >= 95)
-			{
-				rgb = RGB(255, 0, 0);
-			}
-			else if (intVal >= 90)
-			{
-				rgb = RGB(255, 60, 0);
-			}
-			else if (intVal >= 80)
-			{
-				rgb = RGB(255, 120, 0);
-			}
-			else if (intVal >= 75)
-			{
-				rgb = RGB(255, 180, 0);
-			}
-		}
+        pWnd->GetWindowText(strVal);
+        if (strVal[0] >= 'A' || strVal[0] >= 'D')
+        {
+            if (strVal[0] == 'A')
+            {
+                rgb = RGB(255, 0, 0);
+            }
+            else if (strVal[0] == 'B')
+            {
+                rgb = RGB(255, 180, 0);
+            }
+        }
+        else
+        {
+            int intVal = atoi(strVal);
+            if (intVal >= 95)
+            {
+                rgb = RGB(255, 0, 0);
+            }
+            else if (intVal >= 90)
+            {
+                rgb = RGB(255, 60, 0);
+            }
+            else if (intVal >= 80)
+            {
+                rgb = RGB(255, 120, 0);
+            }
+            else if (intVal >= 75)
+            {
+                rgb = RGB(255, 180, 0);
+            }
+        }
         
         pDC->SetTextColor(rgb);
-		if (rgb != 0)
-		{
-			CFont font;
-			font.CreateFontIndirect(&m_boldFont);
-			pDC-> SelectObject(&font); 
-		}
+        if (rgb != 0)
+        {
+            CFont font;
+            font.CreateFontIndirect(&m_boldFont);
+            pDC-> SelectObject(&font); 
+        }
     }
 
     //}
@@ -269,10 +268,10 @@ HBRUSH CPlayerLibDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 
 BOOL CPlayerLibDlg::PreTranslateMessage(MSG* pMsg)
 {
-	// TODO: 在此添加专用代码和/或调用基类
-	if (NULL != m_ttCtrl.GetSafeHwnd())            
-		m_ttCtrl.RelayEvent(pMsg);
+    // TODO: 在此添加专用代码和/或调用基类
+    if (NULL != m_ttCtrl.GetSafeHwnd())            
+        m_ttCtrl.RelayEvent(pMsg);
 
 
-	return CDialog::PreTranslateMessage(pMsg);
+    return CDialog::PreTranslateMessage(pMsg);
 }

@@ -1,4 +1,5 @@
 #pragma once
+#include "afxcmn.h"
 
 
 // CLeagueMarketPage 对话框
@@ -18,4 +19,9 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 支持
 
 	DECLARE_MESSAGE_MAP()
+public:
+    CListCtrl m_listCtrl;
+    virtual BOOL OnInitDialog();
+    CListCtrl m_listCtrlMyTeam;
+    afx_msg void OnBnClickedMarketButton();
 };

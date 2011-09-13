@@ -23,12 +23,12 @@ CPlayerLibHandler::~CPlayerLibHandler(void)
 CPlayerLibHandler::CPlayerLibHandler(HWND hWnd, CTreeCtrl* pTreeCtrl, CListCtrl* pListCtrl, CStatic* pPictureCtrl, CToolTipCtrl* pToolTipCtrl)
 {
     m_playerLibHwnd = hWnd;
-    m_pDb			= NULL;
-    m_pSubItem		= NULL;
+    m_pDb           = NULL;
+    m_pSubItem      = NULL;
     m_pTreeCtrl     = pTreeCtrl;
     m_pListCtrl     = pListCtrl;
     m_pPictureCtrl  = pPictureCtrl;
-	m_pToolTipCtrl  = pToolTipCtrl;
+    m_pToolTipCtrl  = pToolTipCtrl;
 }
 
 
@@ -78,7 +78,7 @@ static int _continents_callback(void * param, int argc, char ** argv, char ** sz
     CTreeCtrl* pTreeCtrl = pPlayerLibHandler->m_pTreeCtrl;
 
     HTREEITEM hItem;
-	char* continent_name = U2G(argv[1]);
+    char* continent_name = U2G(argv[1]);
     if (pPlayerLibHandler->m_continent_list.size() <= 0) {
         hItem = pTreeCtrl->InsertItem(continent_name, 0, 1, TVI_ROOT);
         pTreeCtrl->Expand(hItem, TVE_EXPAND);
@@ -89,7 +89,7 @@ static int _continents_callback(void * param, int argc, char ** argv, char ** sz
     }
     pPlayerLibHandler->m_continent_list.push_back(make_pair(atoi(argv[0]), hItem));
     
-	delete [] continent_name;
+    delete [] continent_name;
     return 0;
 }
 //
@@ -99,7 +99,7 @@ static int _teams_callback(void * param, int argc, char ** argv, char ** szColNa
 {	
     CPlayerLibHandler* pPlayerLibHandler = (CPlayerLibHandler*)param;
     CTreeCtrl* pTreeCtrl = pPlayerLibHandler->m_pTreeCtrl;
-	map<string, vector<string> >* pTeamDict = &pPlayerLibHandler->m_team_dict;
+    map<string, vector<string> >* pTeamDict = &pPlayerLibHandler->m_team_dict;
 
     HTREEITEM hItem, hSubItem;
 
@@ -108,18 +108,18 @@ static int _teams_callback(void * param, int argc, char ** argv, char ** szColNa
         if (pPlayerLibHandler->m_continent_list[i].first == atoi(argv[1]))
         {
             hItem = pPlayerLibHandler->m_continent_list[i].second;
-			break;
+            break;
         }
     }
 
-	string continet_name = pTreeCtrl->GetItemText(hItem);
-	map<string, vector<string> >::iterator it = pTeamDict->find(continet_name);
-	if(it == pTeamDict->end()) {
-		vector<string> team_list;
-		pTeamDict->insert(map<string, vector<string> >::value_type(continet_name, team_list));
-	}
+    string continet_name = pTreeCtrl->GetItemText(hItem);
+    map<string, vector<string> >::iterator it = pTeamDict->find(continet_name);
+    if(it == pTeamDict->end()) {
+        vector<string> team_list;
+        pTeamDict->insert(map<string, vector<string> >::value_type(continet_name, team_list));
+    }
     
-	char* team_name = U2G(argv[2]);
+    char* team_name = U2G(argv[2]);
     if (pPlayerLibHandler->m_pSubItem == NULL)
     {
         (pPlayerLibHandler->m_pSubItem) = pTreeCtrl->InsertItem(team_name, 0, 1, hItem);
@@ -129,10 +129,10 @@ static int _teams_callback(void * param, int argc, char ** argv, char ** szColNa
         (pPlayerLibHandler->m_pSubItem) = pTreeCtrl->InsertItem(team_name, 0, 1, hItem, (pPlayerLibHandler->m_pSubItem));
     }
 
-	it = pTeamDict->find(continet_name);
-	it->second.push_back(team_name);
+    it = pTeamDict->find(continet_name);
+    it->second.push_back(team_name);
 
-	delete [] team_name;
+    delete [] team_name;
     return 0;
 }
 
@@ -140,15 +140,15 @@ static int _teams_callback(void * param, int argc, char ** argv, char ** szColNa
 // 查询数据库球队信息回调函数
 //
 static int _players_callback(void * param, int argc, char ** argv, char ** szColName)
-{	
+{   
     CPlayerLibHandler* pPlayerLibHandler = (CPlayerLibHandler*)param;
     CListCtrl* pListCtrl = pPlayerLibHandler->m_pListCtrl;
 
-	char* name    = U2G(argv[2]);
-	char* country = U2G(argv[8]);
-	char* club    = U2G(argv[12]);
-	char* pos     = U2G(argv[3]);
-	char* value   = U2G(argv[4]);
+    char* name    = U2G(argv[2]);
+    char* country = U2G(argv[8]);
+    char* club    = U2G(argv[12]);
+    char* pos     = U2G(argv[3]);
+    char* value   = U2G(argv[4]);
     int nRow = pListCtrl->InsertItem(0, name);
     pListCtrl->SetItemText(nRow, 1, country);
     pListCtrl->SetItemText(nRow, 2, club);
@@ -157,11 +157,11 @@ static int _players_callback(void * param, int argc, char ** argv, char ** szCol
 
     pPlayerLibHandler->m_player_list.push_back(make_pair(name, club));
 
-	delete [] name;
-	delete [] country;
-	delete [] club;
-	delete [] pos;
-	delete [] value;
+    delete [] name;
+    delete [] country;
+    delete [] club;
+    delete [] pos;
+    delete [] value;
     return 0;
 }
 
@@ -174,7 +174,7 @@ static int _player_detail_callback(void * param, int argc, char ** argv, char **
     HWND playerLibHwnd = pPlayerLibHandler->m_playerLibHwnd;
     CStatic* pPictureCtrl = pPlayerLibHandler->m_pPictureCtrl;
 
-	string picture_path = CUtilHandler::GetInstance()->GetAppPath() + "\\face\\";
+    string picture_path = CUtilHandler::GetInstance()->GetAppPath() + "\\face\\";
     picture_path += argv[0];
     //
     // 如果球员头像不存在则加载默认头像
@@ -191,21 +191,21 @@ static int _player_detail_callback(void * param, int argc, char ** argv, char **
     HRESULT ret = img.Load(picture_path.c_str()); 
     HBITMAP bitmap = img.Detach(); 
     HBITMAP preBitmap = pPictureCtrl->SetBitmap(bitmap);
-	if (preBitmap)
-	{
-		DeleteObject(preBitmap);
-	}
-	img.Destroy();
+    if (preBitmap)
+    {
+        DeleteObject(preBitmap);
+    }
+    img.Destroy();
 
-	char* c_name		 = U2G(argv[2]);
-	char* c_country		 = U2G(argv[8]);
-	char* c_country_team = U2G(argv[11]);
-	char* c_club		 = U2G(argv[12]);
-	char* c_birth		 = U2G(argv[13]);
-	char* c_cons		 = U2G(argv[14]);
-	char* c_side		 = U2G(argv[18]);
-	char* c_foot		 = U2G(argv[19]);
-	char* c_spec		 = U2G(argv[50]);
+    char* c_name		 = U2G(argv[2]);
+    char* c_country		 = U2G(argv[8]);
+    char* c_country_team = U2G(argv[11]);
+    char* c_club		 = U2G(argv[12]);
+    char* c_birth		 = U2G(argv[13]);
+    char* c_cons		 = U2G(argv[14]);
+    char* c_side		 = U2G(argv[18]);
+    char* c_foot		 = U2G(argv[19]);
+    char* c_spec		 = U2G(argv[50]);
 
     string name                     = c_name;
     string default_position         = argv[3];
@@ -306,19 +306,19 @@ static int _player_detail_callback(void * param, int argc, char ** argv, char **
     SetDlgItemText(playerLibHwnd, IDC_STATIC_44, injured.c_str());
     SetDlgItemText(playerLibHwnd, IDC_STATIC_45, special_ability.c_str());
 
-	pPlayerLibHandler->m_pToolTipCtrl->AddTool(CWnd::FromHandle(::GetDlgItem(playerLibHwnd, IDC_STATIC_1)), name.c_str());
-	pPlayerLibHandler->m_pToolTipCtrl->AddTool(CWnd::FromHandle(::GetDlgItem(playerLibHwnd, IDC_STATIC_5)), we_name.c_str());
-	pPlayerLibHandler->m_pToolTipCtrl->AddTool(CWnd::FromHandle(::GetDlgItem(playerLibHwnd, IDC_STATIC_45)), special_ability.c_str());
+    pPlayerLibHandler->m_pToolTipCtrl->AddTool(CWnd::FromHandle(::GetDlgItem(playerLibHwnd, IDC_STATIC_1)), name.c_str());
+    pPlayerLibHandler->m_pToolTipCtrl->AddTool(CWnd::FromHandle(::GetDlgItem(playerLibHwnd, IDC_STATIC_5)), we_name.c_str());
+    pPlayerLibHandler->m_pToolTipCtrl->AddTool(CWnd::FromHandle(::GetDlgItem(playerLibHwnd, IDC_STATIC_45)), special_ability.c_str());
 
-	delete [] c_name;
-	delete [] c_country;
-	delete [] c_country_team;
-	delete [] c_club;
-	delete [] c_birth;
-	delete [] c_cons;
-	delete [] c_side;
-	delete [] c_foot;
-	delete [] c_spec;
+    delete [] c_name;
+    delete [] c_country;
+    delete [] c_country_team;
+    delete [] c_club;
+    delete [] c_birth;
+    delete [] c_cons;
+    delete [] c_side;
+    delete [] c_foot;
+    delete [] c_spec;
     return 0;
 }
 
@@ -358,7 +358,7 @@ bool CPlayerLibHandler::initContinents()
     // 查询数据表
     sqlite3_exec( m_pDb, sSQL3, _continents_callback, this, &pErrMsg);
 
-	m_pTreeCtrl->InsertItem(_T("自定义搜索"), 0, 1, m_pSubItem, m_pSubItem);
+    m_pTreeCtrl->InsertItem(_T("自定义搜索"), 0, 1, m_pSubItem, m_pSubItem);
 
     return true;
 }
@@ -376,12 +376,12 @@ bool CPlayerLibHandler::initTeams()
 
     char * pErrMsg = 0;
     const char* sql = "select * from teams where continent_id = ";
-	CString strSql;
+    CString strSql;
 
     for (int i = 0; i < m_continent_list.size(); i++)
     {
         // 查询数据表
-		strSql.Format("%s%d", sql, m_continent_list[i].first);
+        strSql.Format("%s%d", sql, m_continent_list[i].first);
         sqlite3_exec( m_pDb, strSql.GetBuffer(), _teams_callback, this, &pErrMsg);
     }
 
@@ -404,8 +404,8 @@ bool CPlayerLibHandler::getPlayerListByTeamName(const char* team, bool club)
     {
         team_type = "country";
     }
-	
-	char* team_name = G2U(team);
+    
+    char* team_name = G2U(team);
 
     string sql = "select * from players where ";
     sql = sql + team_type + " = \"" + team_name + "\";";
@@ -413,7 +413,7 @@ bool CPlayerLibHandler::getPlayerListByTeamName(const char* team, bool club)
     // 查询数据表
     sqlite3_exec( m_pDb, sql.c_str(), _players_callback, this, &pErrMsg);
 
-	delete [] team_name;
+    delete [] team_name;
 
     return true;
 }
@@ -427,217 +427,217 @@ bool CPlayerLibHandler::getPlayerDetail(const char* name, const char* club)
 
     char * pErrMsg = 0;
 
-	char* player_name = G2U(name);
-	char* player_club = G2U(club);
+    char* player_name = G2U(name);
+    char* player_club = G2U(club);
 
     string sql = "select * from players where name = \"";
-	sql += player_name;
-	sql += "\" and club = \"";
-	sql += player_club;
-	sql += "\";";
+    sql += player_name;
+    sql += "\" and club = \"";
+    sql += player_club;
+    sql += "\";";
 
     // 查询数据表
     sqlite3_exec( m_pDb, sql.c_str(), _player_detail_callback, this, &pErrMsg);
 
-	delete [] player_name;
-	delete [] player_club;
+    delete [] player_name;
+    delete [] player_club;
 
     return true;
 }
 
 bool CPlayerLibHandler::getPlayerListByCustom(const char* name = NULL,
-											  const char* we_name = NULL,
-											  const char* country = NULL,
-											  const char* club = NULL,
-											  const char* pos = NULL,
-											  const char* birth = NULL,
-											  const char* cons = NULL,
-											  const char* foot = NULL,
-											  const char* side = NULL,
-											  int age_min = 0,
-											  int age_max = 0,
-											  int height_min = 0,
-											  int height_max = 0,
-											  int weight_min = 0,
-											  int weight_max = 0,
-											  int value_min = 0,
-											  int value_max = 0)
+                                              const char* we_name = NULL,
+                                              const char* country = NULL,
+                                              const char* club = NULL,
+                                              const char* pos = NULL,
+                                              const char* birth = NULL,
+                                              const char* cons = NULL,
+                                              const char* foot = NULL,
+                                              const char* side = NULL,
+                                              int age_min = 0,
+                                              int age_max = 0,
+                                              int height_min = 0,
+                                              int height_max = 0,
+                                              int weight_min = 0,
+                                              int weight_max = 0,
+                                              int value_min = 0,
+                                              int value_max = 0)
 {
-	if (!initDB())
-	{
-		return false;
-	}
+    if (!initDB())
+    {
+        return false;
+    }
 
-	m_pListCtrl->DeleteAllItems();
-	m_player_list.clear();
-	char * pErrMsg = 0;
+    m_pListCtrl->DeleteAllItems();
+    m_player_list.clear();
+    char * pErrMsg = 0;
 
-	char* c_name	= G2U(name);
-	char* c_we_name = G2U(we_name);
-	char* c_country = G2U(country);
-	char* c_club	= G2U(club);
-	char* c_pos		= G2U(pos);
-	char* c_birth	= G2U(birth);
-	char* c_cons	= G2U(cons);
-	char* c_foot	= G2U(foot);
-	char* c_side	= G2U(side);
+    char* c_name	= G2U(name);
+    char* c_we_name = G2U(we_name);
+    char* c_country = G2U(country);
+    char* c_club	= G2U(club);
+    char* c_pos		= G2U(pos);
+    char* c_birth	= G2U(birth);
+    char* c_cons	= G2U(cons);
+    char* c_foot	= G2U(foot);
+    char* c_side	= G2U(side);
 
-	string condition = "";
-	if (name)
-	{
-		condition += "name = \"";
-		condition += c_name;
-		condition += "\"";
-	}
+    string condition = "";
+    if (name)
+    {
+        condition += "name = \"";
+        condition += c_name;
+        condition += "\"";
+    }
 
-	if (we_name)
-	{
-		if (condition != "")
-		{
-			condition += " and ";
-		}
-		condition += "we_name = \"";
-		condition += c_we_name;
-		condition += "\"";
-	}
+    if (we_name)
+    {
+        if (condition != "")
+        {
+            condition += " and ";
+        }
+        condition += "we_name = \"";
+        condition += c_we_name;
+        condition += "\"";
+    }
 
-	if (country)
-	{
-		if (condition != "")
-		{
-			condition += " and ";
-		}
-		condition += "country = \"";
-		condition += c_country;
-		condition += "\"";
-	}
+    if (country)
+    {
+        if (condition != "")
+        {
+            condition += " and ";
+        }
+        condition += "country = \"";
+        condition += c_country;
+        condition += "\"";
+    }
 
-	if (club)
-	{
-		if (condition != "")
-		{
-			condition += " and ";
-		}
-		condition += "club = \"";
-		condition += c_club;
-		condition += "\"";
-	}
+    if (club)
+    {
+        if (condition != "")
+        {
+            condition += " and ";
+        }
+        condition += "club = \"";
+        condition += c_club;
+        condition += "\"";
+    }
 
-	if (pos)
-	{
-		if (condition != "")
-		{
-			condition += " and ";
-		}
-		condition += "club_position = \"";
-		condition += c_pos;
-		condition += "\"";
-	}
+    if (pos)
+    {
+        if (condition != "")
+        {
+            condition += " and ";
+        }
+        condition += "club_position = \"";
+        condition += c_pos;
+        condition += "\"";
+    }
 
-	if (birth)
-	{
-		if (condition != "")
-		{
-			condition += " and ";
-		}
-		condition += "birth = \"";
-		condition += c_birth;
-		condition += "\"";
-	}
+    if (birth)
+    {
+        if (condition != "")
+        {
+            condition += " and ";
+        }
+        condition += "birth = \"";
+        condition += c_birth;
+        condition += "\"";
+    }
 
-	if (cons)
-	{
-		if (condition != "")
-		{
-			condition += " and ";
-		}
-		condition += "constellation = \"";
-		condition += c_cons;
-		condition += "\"";
-	}
+    if (cons)
+    {
+        if (condition != "")
+        {
+            condition += " and ";
+        }
+        condition += "constellation = \"";
+        condition += c_cons;
+        condition += "\"";
+    }
 
-	if (foot)
-	{
-		if (condition != "")
-		{
-			condition += " and ";
-		}
-		condition += "foot = \"";
-		condition += c_foot;
-		condition += "\"";
-	}
+    if (foot)
+    {
+        if (condition != "")
+        {
+            condition += " and ";
+        }
+        condition += "foot = \"";
+        condition += c_foot;
+        condition += "\"";
+    }
 
-	if (side)
-	{
-		if (condition != "")
-		{
-			condition += " and ";
-		}
-		condition += "favoured_side = \"";
-		condition += c_side;
-		condition += "\"";
-	}
+    if (side)
+    {
+        if (condition != "")
+        {
+            condition += " and ";
+        }
+        condition += "favoured_side = \"";
+        condition += c_side;
+        condition += "\"";
+    }
 
-	if (age_min > 0 && age_max > 0 && age_min <= age_max)
-	{
-		if (condition != "")
-		{
-			condition += " and ";
-		}
-		CString strCondition;
-		strCondition.Format("age >= %d and age <= %d", age_min, age_max);
-		condition += strCondition;
-	}
+    if (age_min > 0 && age_max > 0 && age_min <= age_max)
+    {
+        if (condition != "")
+        {
+            condition += " and ";
+        }
+        CString strCondition;
+        strCondition.Format("age >= %d and age <= %d", age_min, age_max);
+        condition += strCondition;
+    }
 
-	if (height_min > 0 && height_max > 0 && height_min <= height_max)
-	{
-		if (condition != "")
-		{
-			condition += " and ";
-		}
-		CString strCondition;
-		strCondition.Format("hight >= %d and hight <= %d", height_min, height_max);
-		condition += strCondition;
-	}
+    if (height_min > 0 && height_max > 0 && height_min <= height_max)
+    {
+        if (condition != "")
+        {
+            condition += " and ";
+        }
+        CString strCondition;
+        strCondition.Format("hight >= %d and hight <= %d", height_min, height_max);
+        condition += strCondition;
+    }
 
-	if (weight_min > 0 && weight_max > 0 && weight_min <= weight_max)
-	{
-		if (condition != "")
-		{
-			condition += " and ";
-		}
-		CString strCondition;
-		strCondition.Format("weight >= %d and weight <= %d", weight_min, weight_max);
-		condition += strCondition;
-	}
+    if (weight_min > 0 && weight_max > 0 && weight_min <= weight_max)
+    {
+        if (condition != "")
+        {
+            condition += " and ";
+        }
+        CString strCondition;
+        strCondition.Format("weight >= %d and weight <= %d", weight_min, weight_max);
+        condition += strCondition;
+    }
 
-	if (value_min > 0 && value_max > 0 && value_min <= value_max)
-	{
-		if (condition != "")
-		{
-			condition += " and ";
-		}
-		CString strCondition;
-		strCondition.Format("default_complex_value >= %d and default_complex_value <= %d", value_min, value_max);
-		condition += strCondition;
-	}
+    if (value_min > 0 && value_max > 0 && value_min <= value_max)
+    {
+        if (condition != "")
+        {
+            condition += " and ";
+        }
+        CString strCondition;
+        strCondition.Format("default_complex_value >= %d and default_complex_value <= %d", value_min, value_max);
+        condition += strCondition;
+    }
 
-	string sql = "select * from players where ";
-	sql += condition;
+    string sql = "select * from players where ";
+    sql += condition;
 
 
-	// 查询数据表
-	sqlite3_exec( m_pDb, sql.c_str(), _players_callback, this, &pErrMsg);
+    // 查询数据表
+    sqlite3_exec( m_pDb, sql.c_str(), _players_callback, this, &pErrMsg);
 
-	delete c_name;
-	delete c_we_name;
-	delete c_country;
-	delete c_club;
-	delete c_pos;
-	delete c_birth;
-	delete c_cons;
-	delete c_foot;
-	delete c_side;
+    delete c_name;
+    delete c_we_name;
+    delete c_country;
+    delete c_club;
+    delete c_pos;
+    delete c_birth;
+    delete c_cons;
+    delete c_foot;
+    delete c_side;
 
-	return true;
+    return true;
 }

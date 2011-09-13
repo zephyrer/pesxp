@@ -19,7 +19,6 @@
 #define IDD_LEAGUE_ASSITANT_RANK_DIALOG 141
 #define IDD_LEAGUE_GOAL_RANK_DIALOG     142
 #define IDD_LEAGUE_HONOR_DIALOG         143
-#define IDD_LEAGUE_TEAM_RANK_DIALOG1    144
 #define IDD_LEAGUE_MARKET_DIALOG        144
 #define IDC_LOGIN_BUTTON_LOGIN          1000
 #define IDC_LOGIN_BUTTON_REGISTER       1001
@@ -223,6 +222,7 @@
 #define IDC_BUTTON1                     1186
 #define IDC_BUTTON_SEARCH               1186
 #define IDC_JOIN_LEAGUE                 1186
+#define IDC_MARKET_BUTTON               1186
 #define IDC_EDIT1                       1187
 #define IDC_EDIT_NAME                   1187
 #define IDC_EDIT2                       1188
@@ -280,8 +280,27 @@
 #define IDC_COMBO_CONS                  1228
 #define IDC_LEAGUE_INFO_YELLOW_TEXT     1228
 #define IDC_COMBO_FOOT                  1229
+#define IDC_LIST_MY_TEAM                1229
 #define IDC_EDIT_HEIGHT_MAX             1230
+#define IDC_MY_TEAM_NAME_TEXT           1230
 #define IDC_COMBO_FOOT_SIDE             1231
+#define IDC_MY_TEAM_MONEY_TEXT          1231
+#define IDC_MY_TEAM_RANK_TEXT           1232
+#define IDC_MY_TEAM_WIN_PERCENT_TEXT    1233
+#define IDC_MY_TEAM_WIN_COUNT_TEXT      1234
+#define IDC_MY_TEAM_TIE_COUNT_TEXT      1235
+#define IDC_MY_TEAM_LOSE_COUNT_TEXT     1236
+#define IDC_MY_TEAM_GOAL_TEXT           1237
+#define IDC_MY_TEAM_ASSITANT_TEXT       1238
+#define IDC_MY_TEAM_RED_TEXT            1239
+#define IDC_MY_TEAM_YELLOW_TEXT         1240
+#define IDC_LIST_CALENDAR               1241
+#define IDC_LIST_TEAM_RANK              1242
+#define IDC_LIST_GOAL_RANK              1243
+#define IDC_LIST_ASSITANT_RANK          1244
+#define IDC_LIST_HONOR                  1245
+#define IDC_LIST_MARKET                 1246
+#define IDC_LIST_MY_MARKET              1247
 
 // Next default values for new objects
 // 
@@ -289,7 +308,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        140
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1229
+#define _APS_NEXT_CONTROL_VALUE         1248
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

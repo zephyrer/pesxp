@@ -271,7 +271,7 @@ void CUserCenterDlg::OnBnClickedButtonEnterMyLeague()
 //
 void CUserCenterDlg::OnBnClickedButtonWatchLeague()
 {
-    ShowLeagueInfoDlg(true, false);
+    ShowLeagueInfoDlg(false, false, true, true, true, true, true, false);
 }
 
 //

@@ -290,11 +290,11 @@
 				Name="Controller"
 				>
 				<File
-					RelativePath=".\Controller\LoginHandler.cpp"
+					RelativePath=".\Controller\PlayerLibHandler.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\Controller\PlayerLibHandler.cpp"
+					RelativePath=".\Controller\SyncHandler.cpp"
 					>
 				</File>
 			</Filter>
@@ -408,11 +408,11 @@
 				Name="Controller"
 				>
 				<File
-					RelativePath=".\Controller\LoginHandler.h"
+					RelativePath=".\Controller\PlayerLibHandler.h"
 					>
 				</File>
 				<File
-					RelativePath=".\Controller\PlayerLibHandler.h"
+					RelativePath=".\Controller\SyncHandler.h"
 					>
 				</File>
 			</Filter>

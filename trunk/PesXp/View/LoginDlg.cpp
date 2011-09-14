@@ -205,12 +205,14 @@ void CLoginDlg::OnBnClickedLoginButtonLogin()
         return;
     }
 
-    //if (m_loginHandler->doLogin(m_strLoginUserName, m_strLoginPassword))
-    //{
-        //return CDialog::OnOK();
-        CWaitingDlg WaitingDlg(this);
-        WaitingDlg.PerformSelectorAndBeginWaitingDlg(_T("登录中..."), m_loginHandler->doLogin, NULL);
-    //}
+	UserLoginInfo userInfo;
+	userInfo.szUserName = m_strLoginUserName;
+	userInfo.szPassword = m_strLoginPassword;
+
+    CWaitingDlg WaitingDlg(this);
+    WaitingDlg.PerformSelectorAndBeginWaitingDlg(_T("登录中..."), m_syncHandler->Login, &userInfo);
+
+	return CDialog::OnOK();
 }
 
 //
@@ -250,6 +252,8 @@ void CLoginDlg::OnBnClickedLoginButtonSubmit()
     //
     UpdateData(true);
 
+	SetDlgItemText(IDC_REG_TEXT_TIP_INFO, _T(""));
+
     //
     // 检查参数合法性
     //
@@ -282,19 +286,15 @@ void CLoginDlg::OnBnClickedLoginButtonSubmit()
         SetDlgItemText(IDC_REG_TEXT_TIP_INFO, _T("注册邮箱地址非法"));
         return;
     }
-    
-    //
-    // TODO 参数正确 注册逻辑
-    //
-    if (!m_loginHandler->doRegister(m_strRegUserName,
-                                    m_strRegPassword,
-                                    m_strQQ,
-                                    m_strMail))
-    {
-        //
-        // TODO 处理错误逻辑
-        //
-    }
+
+	UserLoginInfo userInfo;
+	userInfo.szUserName = m_strRegUserName;
+	userInfo.szPassword = m_strRegPassword;
+	userInfo.szQQ		= m_strQQ;
+	userInfo.szMail		= m_strMail;
+
+	CWaitingDlg WaitingDlg(this);
+    WaitingDlg.PerformSelectorAndBeginWaitingDlg(_T("注册中..."), m_syncHandler->Register, &userInfo);
 }
 
 //

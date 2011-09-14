@@ -20,6 +20,9 @@
 #define IDD_LEAGUE_GOAL_RANK_DIALOG     142
 #define IDD_LEAGUE_HONOR_DIALOG         143
 #define IDD_LEAGUE_MARKET_DIALOG        144
+#define IDD_WAITING_DIALOG              145
+#define IDR_GIF1                        155
+#define IDR_GIF_WAITING                 155
 #define IDC_LOGIN_BUTTON_LOGIN          1000
 #define IDC_LOGIN_BUTTON_REGISTER       1001
 #define IDC_LOGIN_EDIT_USER_NAME        1002
@@ -301,14 +304,16 @@
 #define IDC_LIST_HONOR                  1245
 #define IDC_LIST_MARKET                 1246
 #define IDC_LIST_MY_MARKET              1247
+#define IDC_WAITING_MESSAGE_TEXT        1250
+#define IDC_WAITING_GIF                 1252
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        140
-#define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1248
+#define _APS_NEXT_RESOURCE_VALUE        156
+#define _APS_NEXT_COMMAND_VALUE         32772
+#define _APS_NEXT_CONTROL_VALUE         1253
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

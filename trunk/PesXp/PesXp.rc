@@ -549,6 +549,14 @@ BEGIN
     PUSHBUTTON      "¬Ú¬Ù«Ú‘±",IDC_MARKET_BUTTON,214,136,55,30
 END
 
+IDD_WAITING_DIALOG DIALOGEX 0, 0, 316, 182
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_WAITING_GIF,"Static",SS_BLACKRECT,86,60,32,22
+    LTEXT           "æ≤Ã¨",IDC_WAITING_MESSAGE_TEXT,124,66,110,13
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -716,6 +724,14 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 186
     END
+
+    IDD_WAITING_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 309
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 175
+    END
 END
 #endif    // APSTUDIO_INVOKED
 
@@ -732,6 +748,13 @@ BEGIN
     0
 END
 
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// GIF
+//
+
+IDR_GIF_WAITING         GIF                     "res\\waiting.gif"
 
 /////////////////////////////////////////////////////////////////////////////
 //

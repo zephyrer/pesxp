@@ -99,7 +99,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory=".\Bin"
+			OutputDirectory="..\Bin"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
 			UseOfMFC="2"
@@ -273,6 +273,10 @@
 					RelativePath=".\View\UserCenterDlg.cpp"
 					>
 				</File>
+				<File
+					RelativePath=".\View\WaitingDlg.cpp"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="Model"
@@ -297,6 +301,10 @@
 			<Filter
 				Name="Util"
 				>
+				<File
+					RelativePath=".\Util\PictureEx.cpp"
+					>
+				</File>
 				<File
 					RelativePath=".\Util\UtilHandler.cpp"
 					>
@@ -383,6 +391,10 @@
 					RelativePath=".\View\UserCenterDlg.h"
 					>
 				</File>
+				<File
+					RelativePath=".\View\WaitingDlg.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="Model"
@@ -412,6 +424,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\Util\PictureEx.h"
+					>
+				</File>
+				<File
 					RelativePath=".\Util\UtilHandler.h"
 					>
 				</File>
@@ -423,6 +439,18 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 			<File
+				RelativePath=".\res\child.gif"
+				>
+			</File>
+			<File
+				RelativePath=".\res\gif1.bin"
+				>
+			</File>
+			<File
+				RelativePath=".\res\gif2.bin"
+				>
+			</File>
+			<File
 				RelativePath=".\res\PesXp.ico"
 				>
 			</File>
@@ -432,6 +460,10 @@
 			</File>
 			<File
 				RelativePath=".\res\PesXp.rc2"
+				>
+			</File>
+			<File
+				RelativePath=".\res\waiting.gif"
 				>
 			</File>
 		</Filter>

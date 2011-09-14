@@ -8,7 +8,7 @@ public:
     CLoginHandler(void);
     ~CLoginHandler(void);
 
-    bool doLogin(CString strUserName, CString strPassword);
+    static AFX_THREADPROC doLogin(LPVOID param);//CString strUserName, CString strPassword);
     bool doRegister(
         CString strUserName,
         CString strPassword,

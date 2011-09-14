@@ -5,6 +5,7 @@
 #include "PesXp.h"
 #include "LoginDlg.h"
 #include "const.h"
+#include "WaitingDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -204,10 +205,12 @@ void CLoginDlg::OnBnClickedLoginButtonLogin()
         return;
     }
 
-    if (m_loginHandler->doLogin(m_strLoginUserName, m_strLoginPassword))
-    {
-        return CDialog::OnOK();
-    }
+    //if (m_loginHandler->doLogin(m_strLoginUserName, m_strLoginPassword))
+    //{
+        //return CDialog::OnOK();
+        CWaitingDlg WaitingDlg(this);
+        WaitingDlg.PerformSelectorAndBeginWaitingDlg(_T("µÇÂ¼ÖÐ..."), m_loginHandler->doLogin, NULL);
+    //}
 }
 
 //

@@ -6,6 +6,7 @@
 #include "LoginHandler.h"
 #include "UtilHandler.h"
 #include "afxwin.h"
+#include "PictureEx.h"
 
 // CLoginDlg ¶Ô»°¿ò
 class CLoginDlg : public CDialog

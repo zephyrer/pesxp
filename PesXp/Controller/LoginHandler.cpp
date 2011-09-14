@@ -13,9 +13,10 @@ CLoginHandler::~CLoginHandler(void)
 //
 // 具体用户登陆验证逻辑
 //
-bool CLoginHandler::doLogin(CString strUserName, CString strPassword)
+AFX_THREADPROC CLoginHandler::doLogin(LPVOID param)//CString strUserName, CString strPassword)
 {
-    return true;
+    Sleep(5000);
+    return 0;
 }
 
 //

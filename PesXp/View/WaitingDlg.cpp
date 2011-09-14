@@ -115,7 +115,6 @@ AFX_THREADPROC backgroundThreadFun(LPWaitingDlgThreadStruct param)
     LPVOID params           = param->pThreadFunParams;
 
     UINT threadRet          = workFunc(params);
-
     //
     // 执行完毕关闭等待提示信息
     //
@@ -152,5 +151,6 @@ void CWaitingDlg::EndWaitingDlg()
     //
     // 关闭提示对话框
     //
+	this->m_nFlags &= ~WF_CONTINUEMODAL;
     this->EndDialog(0);
 }

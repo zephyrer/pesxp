@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "LoginHandler.h"
+#include "SyncHandler.h"
 #include "UtilHandler.h"
 #include "afxwin.h"
 #include "PictureEx.h"
@@ -59,8 +59,8 @@ private:
     CRect           m_rectLogin;            // 登陆对话框的大小
     CRect           m_rectRegister;         // 注册对话框的大小
     CRect           m_rectSeparator;        // 登陆与注册的分隔线
-    CUtilHandler*   m_utilHandler;          // 工具类
-    CLoginHandler*  m_loginHandler;         // 处理登陆/注册具体逻辑
+    CUtilHandler   *m_utilHandler;          // 工具类
+    CSyncHandler   *m_syncHandler;         // 处理登陆/注册具体逻辑
 public:
     CStatic m_staticTipInfo;
     afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);

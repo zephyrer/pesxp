@@ -41,6 +41,7 @@ protected:
     virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
     DECLARE_MESSAGE_MAP()
+    afx_msg LRESULT OnUpdateUserCenter(WPARAM wParam, LPARAM lParam);
 public:
     afx_msg void OnBnClickedButtonLeagueDoing();
 

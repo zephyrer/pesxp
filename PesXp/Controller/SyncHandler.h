@@ -9,6 +9,33 @@ typedef struct {
     CString szMail;
 } UserLoginInfo, *LPUserLoginInfo;
 
+typedef struct {
+    CString szMyAccount;
+    CString szMyCredie;
+    CString szWinCount;
+    CString szEqualCount;
+    CString szLoseCount;
+    CString szWinPercentCount;
+    CString szTotalRank;
+    CString szGoalCount;
+    CString szLostCount;
+    CString szRedCount;
+    CString szYellowCount;
+    CString szNeedConfirmCount;
+    CString szNotConfirmCount;
+    CString szLeagueWinCount;
+    CString szLeagueEqualCount;
+    CString szLeagueLoseCount;
+    CString szLeagueWinPercentCount;
+    CString szLeagueRank;
+    CString szLeagueMoney;
+    CString szLeagueTheFirst;
+    CString szLeagueTheEnd;
+    CString szLeaguePlayerCount;
+    CString szLeagueInfo;
+    CString szLeagueSignCount;
+} UserCenterInfo, *LPUserCenterInfo;
+
 class CSyncHandler
 {
 public:

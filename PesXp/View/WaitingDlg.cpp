@@ -132,27 +132,10 @@ AFX_THREADPROC backgroundThreadFun(LPWaitingDlgThreadStruct param)
     // 执行完毕关闭等待提示信息
     //
     param->pWaitingDlg->EndWaitingDlg();
-
+    
     free(param);
 
     return 0;
-}
-
-void CWaitingDlg::BeginShowWaitingDlg(CDialog* pParent, LPCTSTR szMsg)
-{
-    m_pParentDlg    = pParent;
-    m_szMessage     = szMsg;
-    _hInstance->ShowWindow(SW_SHOW);
-}
-
-void CWaitingDlg::EndShowWaitingDlg()
-{
-    this->ShowWindow(SW_HIDE);
-    m_pTransparentDlg->ShowWindow(SW_HIDE);
-    //
-    // 释放GIF资源
-    //
-    m_gifWaiting.UnLoad();
 }
 
 void CWaitingDlg::PerformSelectorAndBeginWaitingDlg(CDialog* pParent, LPCTSTR szMsg, LPVOID selector, LPVOID params)
@@ -180,7 +163,11 @@ void CWaitingDlg::EndWaitingDlg()
     //
     // 只是登录后才关闭
     //
-    m_pParentDlg->EndDialog(IDOK);
+    if (!CUserItem::GetInstance()->isLogin)
+    {
+        CUserItem::GetInstance()->isLogin = true;
+        m_pParentDlg->EndDialog(IDOK);
+    }
 
     return;
 //     //
@@ -249,6 +236,7 @@ void CWaitingDlg::OnShowWindow(BOOL bShow, UINT nStatus)
         pWts->pWaitingDlg               = this;
         pWts->pThreadFun                = m_pThreadFun;
         pWts->pThreadFunParams          = m_pThreadFunParams;
+        pWts->pParentDlg                = m_pParentDlg;
         //
         // 开启线程处理函数
         //

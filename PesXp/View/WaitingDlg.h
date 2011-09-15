@@ -53,6 +53,7 @@ public:
 // 等待提示对话框线程函数结构体
 //
 typedef struct {
+    CDialog *pParentDlg;        // 父对话框指针
     CWaitingDlg *pWaitingDlg;   // 信息提示对话框指针
     AFX_THREADPROC pThreadFun;  // 执行函数指针
     LPVOID pThreadFunParams;

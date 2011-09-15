@@ -18,6 +18,8 @@ public:
     int iWaiverCount;
     int iCredie;
 
+    bool isLogin;
+
 private:
     CUserItem(void);
     static CUserItem* _instance;

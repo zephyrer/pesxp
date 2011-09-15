@@ -557,6 +557,12 @@ BEGIN
     LTEXT           "¾²Ì¬",IDC_WAITING_MESSAGE_TEXT,124,66,110,13
 END
 
+IDD_TRANSPARENT_DIALOG DIALOGEX 0, 0, 316, 182
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -726,6 +732,14 @@ BEGIN
     END
 
     IDD_WAITING_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 309
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 175
+    END
+
+    IDD_TRANSPARENT_DIALOG, DIALOG
     BEGIN
         LEFTMARGIN, 7
         RIGHTMARGIN, 309

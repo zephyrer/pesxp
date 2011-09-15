@@ -12,7 +12,6 @@
 #define new DEBUG_NEW
 #endif
 
-
 // CPesXpApp
 
 BEGIN_MESSAGE_MAP(CPesXpApp, CWinApp)
@@ -69,21 +68,15 @@ BOOL CPesXpApp::InitInstance()
     CString appPath = pUtilHandler->GetAppPath();
     USkinInit(NULL, NULL, appPath + _T("\\skin\\pesxp.msstyles"));
 
-    while (true)
+    CLoginDlg loginDlg;
+    INT_PTR retCode = loginDlg.DoModal();
+    if (retCode == IDOK)
     {
-          CLoginDlg* pDlg = new CLoginDlg();
-//          m_pMainWnd = pDlg;
-          INT_PTR nResponse = pDlg->DoModal();
-          if (nResponse == IDCANCEL)
-          {
-              break;
-          }
-
+        //
+        // 如果登录成功显示用户中心
+        //
         CUserCenterDlg* pUserCenterDlg = new CUserCenterDlg();
-//        m_pMainWnd = pUserCenterDlg;
         pUserCenterDlg->DoModal();
-
-        break;
     }
 
     // 由于对话框已关闭，所以将返回 FALSE 以便退出应用程序，

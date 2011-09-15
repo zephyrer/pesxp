@@ -21,7 +21,8 @@
 #define IDD_LEAGUE_HONOR_DIALOG         143
 #define IDD_LEAGUE_MARKET_DIALOG        144
 #define IDD_WAITING_DIALOG              145
-#define IDR_GIF1                        155
+#define IDD_WAITING_DIALOG1             146
+#define IDD_TRANSPARENT_DIALOG          146
 #define IDR_GIF_WAITING                 155
 #define IDC_LOGIN_BUTTON_LOGIN          1000
 #define IDC_LOGIN_BUTTON_REGISTER       1001

@@ -62,7 +62,6 @@ private:
     CLeagueMarketPage   *m_pDlgLeagueMarketPage;    // 联赛转会市场信息
     CUtilHandler        *m_pUtilHandler;             // 公共函数类
 public:
-    afx_msg void OnShowWindow(BOOL bShow, UINT nStatus);
     afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
     afx_msg void OnBnClickedButtonGlory();
     afx_msg void OnBnClickedButtonCalendar();
@@ -126,4 +125,9 @@ private:
     CComboBox m_cmbOtherLeague;
     // 正在报名的联赛
     CComboBox m_cmbSignLeague;
+    // 是否已经同步服务器数据
+    bool m_isSyncData;
+public:
+    virtual BOOL OnInitDialog();
+    afx_msg void OnPaint();
 };

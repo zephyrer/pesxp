@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "SyncHandler.h"
+#include "WaitingDlg.h"
 
 CSyncHandler::CSyncHandler(void)
 {
@@ -11,47 +12,108 @@ CSyncHandler::~CSyncHandler(void)
 }
 
 //
-// 具体用户登陆验证逻辑
+// 用户登录
 //
-AFX_THREADPROC CSyncHandler::Login(LPVOID params)
+UINT32 CSyncHandler::Login(LPVOID params)
 {
-	LPUserLoginInfo pUserInfo = (LPUserLoginInfo)params;
-	
-	TRACE(_T("xxxxxxxxxxxxxxx\n"));
-	TRACE(pUserInfo->szUserName + _T("\n"));
-	TRACE(_T("xxxxxxxxxxxxxxx\n"));
-	TRACE(pUserInfo->szPassword + _T("\n"));
-	TRACE(_T("xxxxxxxxxxxxxxx\n"));
-	//
-	// 请求服务器进行登录
-	//
+    if (params == NULL)
+        return 1;
+
+    LPWaitingDlgThreadStruct pWts = (LPWaitingDlgThreadStruct)params;
+    LPUserLoginInfo pUserInfo = (LPUserLoginInfo)pWts->pThreadFunParams;
+    //
+    // 请求服务器进行登录
+    //
+    Sleep(1000);
+
+    return 0;
+}
+
+//
+// 用户注册
+//
+UINT32 CSyncHandler::Register(LPVOID params)
+{
+    if (params == NULL)
+        return 1;
+
+    LPWaitingDlgThreadStruct pWts = (LPWaitingDlgThreadStruct)params;
+    LPUserLoginInfo pUserInfo = (LPUserLoginInfo)pWts->pThreadFunParams;
+    //
+    // 请求服务器进行注册
+    //
     Sleep(5000);
     return 0;
 }
 
-AFX_THREADPROC CSyncHandler::Register(LPVOID params)
+//
+// 获取用户中心信息
+//
+UINT32 CSyncHandler::RequestUserCenterInfo(LPVOID params)
 {
-	LPUserLoginInfo pUserInfo = (LPUserLoginInfo)params;
-	
-	TRACE(pUserInfo->szUserName);
-	TRACE(pUserInfo->szPassword);
-	TRACE(pUserInfo->szQQ);
-	TRACE(pUserInfo->szMail);
-	//
-	// 请求服务器进行注册
-	//
-	Sleep(5000);
+    if (params == NULL)
+        return 1;
+
+    LPWaitingDlgThreadStruct pWts = (LPWaitingDlgThreadStruct)params;
+    LPUserLoginInfo pUserInfo = (LPUserLoginInfo)pWts->pThreadFunParams;
+
+    //
+    // 请求用户基本数据
+    //
+    pWts->pWaitingDlg->m_textWaiting.SetWindowText(_T("获取用户信息..."));
+    CSyncHandler::RequestUserInfo(pWts->pThreadFunParams);
+
+    //
+    // 请求联赛基本数据
+    //
+    pWts->pWaitingDlg->m_textWaiting.SetWindowText(_T("获取联赛信息..."));
+    CSyncHandler::RequestLeagueInfo(pWts->pThreadFunParams);
+
     return 0;
 }
 
 //
-// 具体用户注册逻辑
+// 获取用户信息
 //
-/*bool CSyncHandler::doRegister(
-                                CString strUserName,
-                                CString strPassword,
-                                CString strQQ,
-                                CString strMail)
+UINT32 CSyncHandler::RequestUserInfo(LPVOID params)
 {
-    return true;
-}*/
+    if (params == NULL)
+        return 1;
+
+    //
+    // 请求服务器获取用户信息
+    //
+    Sleep(5000);
+
+    return 0;
+}
+//
+// 获取联赛信息
+//
+UINT32 CSyncHandler::RequestLeagueInfo(LPVOID params)
+{
+    if (params == NULL)
+        return 1;
+
+    //
+    // 请求服务器获取联赛信息
+    //
+    Sleep(5000);
+
+    return 0;
+}
+//
+// 获取联赛详情
+//
+UINT32 CSyncHandler::RequestLeagueDetail(LPVOID params)
+{
+    if (params == NULL)
+        return 1;
+
+    //
+    // 请求服务器获取联赛详情
+    //
+    Sleep(5000);
+
+    return 0;
+}

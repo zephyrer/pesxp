@@ -11,7 +11,6 @@
 #define new DEBUG_NEW
 #endif
 
-
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
 
 class CAboutDlg : public CDialog
@@ -112,10 +111,8 @@ BOOL CLoginDlg::OnInitDialog()
 
     // 设置此对话框的图标。当应用程序主窗口不是对话框时，框架将自动
     //  执行此操作
-    SetIcon(m_hIcon, TRUE);			// 设置大图标
-    SetIcon(m_hIcon, FALSE);		// 设置小图标
-
-    // TODO: 在此添加额外的初始化代码
+    SetIcon(m_hIcon, TRUE);         // 设置大图标
+    SetIcon(m_hIcon, FALSE);        // 设置小图标
 
     //
     // 获取注册对话框位置参数
@@ -205,14 +202,14 @@ void CLoginDlg::OnBnClickedLoginButtonLogin()
         return;
     }
 
-	UserLoginInfo userInfo;
-	userInfo.szUserName = m_strLoginUserName;
-	userInfo.szPassword = m_strLoginPassword;
+    UserLoginInfo userInfo;
+    userInfo.szUserName = m_strLoginUserName;
+    userInfo.szPassword = m_strLoginPassword;
 
-    CWaitingDlg WaitingDlg(this);
-    WaitingDlg.PerformSelectorAndBeginWaitingDlg(_T("登录中..."), m_syncHandler->Login, &userInfo);
-
-	return CDialog::OnOK();
+    //CWaitingDlg::GetInstance()->BeginShowWaitingDlg(this, _T("登录中"));
+    //CSyncHandler::Login(&userInfo);
+    //CWaitingDlg::GetInstance()->EndShowWaitingDlg();
+    CWaitingDlg::GetInstance()->PerformSelectorAndBeginWaitingDlg(this, _T("登录中..."), CSyncHandler::Login, &userInfo);
 }
 
 //
@@ -252,7 +249,7 @@ void CLoginDlg::OnBnClickedLoginButtonSubmit()
     //
     UpdateData(true);
 
-	SetDlgItemText(IDC_REG_TEXT_TIP_INFO, _T(""));
+    SetDlgItemText(IDC_REG_TEXT_TIP_INFO, _T(""));
 
     //
     // 检查参数合法性
@@ -287,14 +284,13 @@ void CLoginDlg::OnBnClickedLoginButtonSubmit()
         return;
     }
 
-	UserLoginInfo userInfo;
-	userInfo.szUserName = m_strRegUserName;
-	userInfo.szPassword = m_strRegPassword;
-	userInfo.szQQ		= m_strQQ;
-	userInfo.szMail		= m_strMail;
+    UserLoginInfo userInfo;
+    userInfo.szUserName = m_strRegUserName;
+    userInfo.szPassword = m_strRegPassword;
+    userInfo.szQQ       = m_strQQ;
+    userInfo.szMail     = m_strMail;
 
-	CWaitingDlg WaitingDlg(this);
-    WaitingDlg.PerformSelectorAndBeginWaitingDlg(_T("注册中..."), m_syncHandler->Register, &userInfo);
+    CWaitingDlg::GetInstance()->PerformSelectorAndBeginWaitingDlg(this, _T("注册中..."), CSyncHandler::Register, &userInfo);
 }
 
 //

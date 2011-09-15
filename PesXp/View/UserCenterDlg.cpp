@@ -4,6 +4,8 @@
 #include "stdafx.h"
 #include "PesXp.h"
 #include "UserCenterDlg.h"
+#include "WaitingDlg.h"
+#include "SyncHandler.h"
 
 // CUserCenterDlg dialog
 
@@ -11,32 +13,9 @@ IMPLEMENT_DYNAMIC(CUserCenterDlg, CDialog)
 
 CUserCenterDlg::CUserCenterDlg(CWnd* pParent /*=NULL*/)
     : CDialog(CUserCenterDlg::IDD, pParent)
-    , m_strMyAccount(_T("italyouxiao@gmail.com"))
-    , m_strMyCredie(_T("3020"))
-    , m_strWinCount(_T("86"))
-    , m_strEqualCount(_T("22"))
-    , m_strLoseCount(_T("12"))
-    , m_strWinPercentCount(_T("76.53%"))
-    , m_strTotalRank(_T("8"))
-    , m_strGoalCount(_T("368"))
-    , m_strLostCount(_T("135"))
-    , m_strRedCount(_T("12"))
-    , m_strYellowCount(_T("45"))
-    , m_strNeedConfirmCount(_T("2"))
-    , m_strNotConfirmCount(_T("3"))
-    , m_strLeagueWinCount(_T("9"))
-    , m_strLeagueEqualCount(_T("3"))
-    , m_strLeagueLoseCount(_T("1"))
-    , m_strLeagueWinPercentCount(_T("90.12%"))
-    , m_strLeagueRank(_T("2"))
-    , m_strLeagueMoney(_T("2541"))
-    , m_strLeagueTheFirst(_T("AC米兰 - NesTa.xP"))
-    , m_strLeagueTheEnd(_T("巴里 - YouXiao"))
-    , m_strLeaguePlayerCount(_T("18"))
-    , m_strLeagueInfo(_T("2011-03-28"))
-    , m_strLeagueSignCount(_T("8"))
 {
     m_isDefaultDlg              = true;
+    m_isSyncData                = false;
     m_pDlgSubmitScore           = NULL;
     m_pDlgAgreeScore            = NULL;
     m_pDlgLeagueSheet           = NULL;
@@ -110,6 +89,7 @@ BEGIN_MESSAGE_MAP(CUserCenterDlg, CDialog)
     ON_BN_CLICKED(IDC_BUTTON_ENTER_MY_LEAGUE, &CUserCenterDlg::OnBnClickedButtonEnterMyLeague)
     ON_BN_CLICKED(IDC_BUTTON_WATCH_LEAGUE, &CUserCenterDlg::OnBnClickedButtonWatchLeague)
     ON_BN_CLICKED(IDC_BUTTON_LEAGUE_SIGN, &CUserCenterDlg::OnBnClickedButtonLeagueSign)
+    ON_WM_PAINT()
 END_MESSAGE_MAP()
 
 
@@ -117,7 +97,6 @@ END_MESSAGE_MAP()
 
 void CUserCenterDlg::OnBnClickedButtonLeagueDoing()
 {
-    // TODO: Add your control notification handler code here
     if (m_isDefaultDlg)
     {
         SetWindowPos(NULL, 0, 0, m_rectLarge.Width(), m_rectLarge.Height(), SWP_NOMOVE | SWP_NOZORDER);
@@ -130,47 +109,6 @@ void CUserCenterDlg::OnBnClickedButtonLeagueDoing()
     }
 }
 
-void CUserCenterDlg::OnShowWindow(BOOL bShow, UINT nStatus)
-{
-    CDialog::OnShowWindow(bShow, nStatus);
-
-    // TODO: Add your message handler code here
-    //
-    // 获取整个对话框位置参数
-    //
-    GetWindowRect(&m_rectLarge);
-    //
-    // 获取登陆与注册分隔线的位置参数（有用的是right）
-    //
-    GetDlgItem(IDC_UC_SEPARATOR)->GetWindowRect(&m_rectSeparator);
-    //
-    // 保存登陆对话框位置参数
-    //
-    m_rectSmall.left   = m_rectLarge.left;
-    m_rectSmall.top    = m_rectLarge.top;
-    m_rectSmall.right  = m_rectSeparator.left;
-    m_rectSmall.bottom = m_rectLarge.bottom;
-
-    //
-    // 默认显示登陆对话框
-    //
-    SetWindowPos(NULL, 0, 0, m_rectSmall.Width(), m_rectSmall.Height(), SWP_NOMOVE | SWP_NOZORDER);
-
-    //
-    // TODO 初始化测试数据
-    //
-    m_cmbJoinLeague.AddString(_T("第一届PES2011钻石联赛"));
-    m_cmbJoinLeague.AddString(_T("第一届PES2011黄金联赛"));
-    m_cmbJoinLeague.SetCurSel(1);
-
-    m_cmbOtherLeague.AddString(_T("第一届PES2011大师联赛"));
-    m_cmbOtherLeague.AddString(_T("第一届PES2011联SB赛"));
-    m_cmbOtherLeague.SetCurSel(0);
-
-    m_cmbSignLeague.AddString(_T("第二届PES2011黄金联赛"));
-    m_cmbSignLeague.AddString(_T("第二届PES2011大师联赛"));
-    m_cmbSignLeague.SetCurSel(1);
-}
 
 HBRUSH CUserCenterDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
@@ -179,7 +117,7 @@ HBRUSH CUserCenterDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
     // TODO:  Change any attributes of the DC here
     if (GetDlgItem(IDC_UC_FLAG)->m_hWnd == pWnd->m_hWnd)
     {
-        pDC->SetTextColor(RGB(0, 255, 0));
+        pDC->SetTextColor(RGB(0, 0, 240));
     }
     else if (GetDlgItem(IDC_UC_TEXT_ACCOUNT)->m_hWnd == pWnd->m_hWnd || \
              GetDlgItem(IDC_UC_TEXT_CREDIE)->m_hWnd == pWnd->m_hWnd || \
@@ -448,4 +386,88 @@ void CUserCenterDlg::ShowLeagueInfoDlg(bool isShowJoinButton,
         m_pDlgLeagueMarketPage->m_psp.dwFlags &= ~(PSP_HASHELP);
     }
     m_pDlgLeagueSheet->DoModal();
+}
+BOOL CUserCenterDlg::OnInitDialog()
+{
+    CDialog::OnInitDialog();
+
+    //
+    // 获取整个对话框位置参数
+    //
+    GetWindowRect(&m_rectLarge);
+    //
+    // 获取登陆与注册分隔线的位置参数（有用的是right）
+    //
+    GetDlgItem(IDC_UC_SEPARATOR)->GetWindowRect(&m_rectSeparator);
+    //
+    // 保存登陆对话框位置参数
+    //
+    m_rectSmall.left   = m_rectLarge.left;
+    m_rectSmall.top    = m_rectLarge.top;
+    m_rectSmall.right  = m_rectSeparator.left;
+    m_rectSmall.bottom = m_rectLarge.bottom;
+
+    //
+    // 默认显示登陆对话框
+    //
+    SetWindowPos(NULL, 0, 0, m_rectSmall.Width(), m_rectSmall.Height(), SWP_NOMOVE | SWP_NOZORDER);
+
+    return TRUE;  // return TRUE unless you set the focus to a control
+    // 异常: OCX 属性页应返回 FALSE
+}
+
+void CUserCenterDlg::OnPaint()
+{
+    CPaintDC dc(this); // device context for painting
+
+    if (m_isSyncData)
+    {
+        return;
+    }
+
+    CWaitingDlg::GetInstance()->PerformSelectorAndBeginWaitingDlg(this, _T("初始化数据..."), CSyncHandler::RequestUserCenterInfo, this);
+    //
+    // TODO 初始化测试数据
+    //
+    m_strMyAccount = _T("italyouxiao@gmail.com");
+    m_strMyCredie = _T("3020");
+    m_strWinCount = _T("86");
+    m_strEqualCount = _T("22");
+    m_strLoseCount = _T("12");
+    m_strWinPercentCount = _T("76.53%");
+    m_strTotalRank = _T("8");
+    m_strGoalCount = _T("368");
+    m_strLostCount = _T("135");
+    m_strRedCount = _T("12");
+    m_strYellowCount = _T("45");
+    m_strNeedConfirmCount = _T("2");
+    m_strNotConfirmCount = _T("3");
+    m_strLeagueWinCount = _T("9");
+    m_strLeagueEqualCount = _T("3");
+    m_strLeagueLoseCount = _T("1");
+    m_strLeagueWinPercentCount = _T("90.12%");
+    m_strLeagueRank = _T("2");
+    m_strLeagueMoney = _T("2541");
+    m_strLeagueTheFirst = _T("AC米兰 - NesTa.xP");
+    m_strLeagueTheEnd = _T("巴里 - YouXiao");
+    m_strLeaguePlayerCount = _T("18");
+    m_strLeagueInfo = _T("2011-03-28");
+    m_strLeagueSignCount = _T("8");
+
+    m_cmbJoinLeague.AddString(_T("第一届PES2011钻石联赛"));
+    m_cmbJoinLeague.AddString(_T("第一届PES2011黄金联赛"));
+    m_cmbJoinLeague.SetCurSel(1);
+
+    m_cmbOtherLeague.AddString(_T("第一届PES2011大师联赛"));
+    m_cmbOtherLeague.AddString(_T("第一届PES2011联SB赛"));
+    m_cmbOtherLeague.SetCurSel(0);
+
+    m_cmbSignLeague.AddString(_T("第二届PES2011黄金联赛"));
+    m_cmbSignLeague.AddString(_T("第二届PES2011大师联赛"));
+    m_cmbSignLeague.SetCurSel(1);
+
+    UpdateData(false);
+
+    m_isSyncData = true;
+    // 不为绘图消息调用 CDialog::OnPaint()
 }

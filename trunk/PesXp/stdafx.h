@@ -36,7 +36,7 @@
 #include <afxdlgs.h>
 
 
-
+#define WM_UPDATE_USER_CENTER WM_USER + 100
 
 
 #ifdef _UNICODE

@@ -4,6 +4,8 @@
 #include "stdafx.h"
 #include "PesXp.h"
 #include "LeagueInfoPage.h"
+#include "WaitingDlg.h"
+#include "SyncHandler.h"
 
 // CLeagueInfoPage 对话框
 
@@ -12,7 +14,8 @@ IMPLEMENT_DYNAMIC(CLeagueInfoPage, CPropertyPage)
 CLeagueInfoPage::CLeagueInfoPage()
     : CPropertyPage(CLeagueInfoPage::IDD)
 {
-    m_bShowJoinButton = false;
+    m_bShowJoinButton   = false;
+    m_bInitData         = false;
 }
 
 CLeagueInfoPage::~CLeagueInfoPage()
@@ -34,6 +37,8 @@ void CLeagueInfoPage::ShowJoinButton(bool show)
 
 BEGIN_MESSAGE_MAP(CLeagueInfoPage, CPropertyPage)
     ON_WM_CTLCOLOR()
+    ON_WM_PAINT()
+    ON_BN_CLICKED(IDC_BUTTON_LEAGUE_UPDATE, OnButtonUpdate)
 END_MESSAGE_MAP()
 
 
@@ -58,10 +63,24 @@ BOOL CLeagueInfoPage::OnInitDialog()
     //
     CPropertySheet *pPropertySheet = (CPropertySheet *)GetParent();
     pWnd = pPropertySheet->GetDlgItem(IDCANCEL);
-    //pWnd->ShowWindow(SW_HIDE);
     pWnd->SetWindowText(_T("关闭"));
     pWnd = pPropertySheet->GetDlgItem(IDOK);
     pWnd->ShowWindow(SW_HIDE);
+
+    //
+    // 增加更新按钮
+    //
+    CRect rect;
+    pWnd->GetWindowRect(rect);
+    ScreenToClient(rect);
+    m_btnUpdate.Create(
+        _T("更新"), 
+        BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP,
+        rect, 
+        pPropertySheet, 
+        IDC_BUTTON_LEAGUE_UPDATE);
+    m_btnUpdate.SetFont(GetFont());
+    m_btnUpdate.ShowWindow(SW_SHOW);
 
     return TRUE;  // return TRUE unless you set the focus to a control
     // 异常: OCX 属性页应返回 FALSE
@@ -88,4 +107,23 @@ HBRUSH CLeagueInfoPage::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
     }
 
     return hbr;
+}
+
+void CLeagueInfoPage::OnPaint()
+{
+    CPaintDC dc(this); // device context for painting
+
+    if (!m_bInitData)
+    {
+        CWaitingDlg::GetInstance()->PerformSelectorAndBeginWaitingDlg((CDialog*)(CPropertySheet*)this->GetParent(), _T("获取联赛数据"), CSyncHandler::RequestLeagueDetail , this);
+        m_bInitData = true;
+    }
+
+    // 不为绘图消息调用 CPropertyPage::OnPaint()
+}
+
+void CLeagueInfoPage::OnButtonUpdate()
+{
+    m_bInitData = false;
+    SendMessage(WM_PAINT);
 }

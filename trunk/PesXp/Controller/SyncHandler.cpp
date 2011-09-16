@@ -110,7 +110,7 @@ UINT32 CSyncHandler::RequestUserInfo(LPVOID params)
     //
     // 请求服务器获取用户信息
     //
-    Sleep(5000);
+    Sleep(2000);
 
     return 0;
 }
@@ -125,7 +125,7 @@ UINT32 CSyncHandler::RequestLeagueInfo(LPVOID params)
     //
     // 请求服务器获取联赛信息
     //
-    Sleep(5000);
+    Sleep(2000);
 
     return 0;
 }
@@ -139,6 +139,36 @@ UINT32 CSyncHandler::RequestLeagueDetail(LPVOID params)
 
     //
     // 请求服务器获取联赛详情
+    //
+    Sleep(5000);
+
+    return 0;
+}
+//
+// 获取荣誉殿堂信息
+//
+UINT32 CSyncHandler::RequestHonorInfo(LPVOID params)
+{
+    if (params == NULL)
+        return 1;
+
+    //
+    // 请求服务器获取荣誉殿堂信息
+    //
+    Sleep(5000);
+
+    return 0;
+}
+//
+// 获取转会市场信息
+//
+UINT32 CSyncHandler::RequestMarketInfo(LPVOID params)
+{
+    if (params == NULL)
+        return 1;
+
+    //
+    // 请求服务器获取转会市场信息
     //
     Sleep(5000);
 

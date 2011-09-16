@@ -419,6 +419,7 @@ void CUserCenterDlg::ShowLeagueInfoDlg(bool isShowJoinButton,
         m_pDlgLeagueSheet->AddPage(m_pDlgLeagueMarketPage);
         m_pDlgLeagueMarketPage->m_psp.dwFlags &= ~(PSP_HASHELP);
     }
+
     m_pDlgLeagueSheet->DoModal();
 }
 BOOL CUserCenterDlg::OnInitDialog()

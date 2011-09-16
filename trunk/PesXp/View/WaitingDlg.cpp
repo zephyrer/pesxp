@@ -68,8 +68,6 @@ BOOL CWaitingDlg::OnInitDialog()
     if (m_pTransparentDlg == NULL)
     {
         m_pTransparentDlg = new CDialog();
-        //m_pTransparentDlg->Create(IDD_TRANSPARENT_DIALOG);
-        //m_pTransparentDlg->EnableWindow(FALSE);
     }
 
     SetWindowLong(this->GetSafeHwnd(),GWL_EXSTYLE,GetWindowLong(this->GetSafeHwnd(),GWL_EXSTYLE)^0x80000);
@@ -145,9 +143,16 @@ void CWaitingDlg::PerformSelectorAndBeginWaitingDlg(CDialog* pParent, LPCTSTR sz
     m_pParentDlg          = pParent;
     m_szMessage           = szMsg;
 
-    m_pTransparentDlg->Create(IDD_TRANSPARENT_DIALOG);
+    if (m_pTransparentDlg->m_hWnd == NULL)
+    {
+        m_pTransparentDlg->Create(IDD_TRANSPARENT_DIALOG);
+    }
     m_pTransparentDlg->EnableWindow(FALSE);
-    _hInstance->Create(IDD_WAITING_DIALOG);
+
+    if (_hInstance->m_hWnd == NULL)
+    {
+        _hInstance->Create(IDD_WAITING_DIALOG);
+    }
     _hInstance->ShowWindow(SW_SHOW);
 }
 

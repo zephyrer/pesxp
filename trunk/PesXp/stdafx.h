@@ -36,8 +36,8 @@
 #include <afxdlgs.h>
 
 
-#define WM_UPDATE_USER_CENTER WM_USER + 100
-
+#define WM_UPDATE_USER_CENTER       WM_USER + 100
+#define IDC_BUTTON_LEAGUE_UPDATE    0x02000
 
 #ifdef _UNICODE
 #if defined _M_IX86

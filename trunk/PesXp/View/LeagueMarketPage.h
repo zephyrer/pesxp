@@ -24,4 +24,7 @@ public:
     virtual BOOL OnInitDialog();
     CListCtrl m_listCtrlMyTeam;
     afx_msg void OnBnClickedMarketButton();
+    afx_msg void OnPaint();
+private:
+    bool m_bInitData;
 };

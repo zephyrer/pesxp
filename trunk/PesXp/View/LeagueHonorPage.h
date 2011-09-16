@@ -22,4 +22,8 @@ protected:
 public:
     virtual BOOL OnInitDialog();
     CListCtrl m_listCtrl;
+    afx_msg void OnPaint();
+
+private:
+    bool m_bInitData;
 };

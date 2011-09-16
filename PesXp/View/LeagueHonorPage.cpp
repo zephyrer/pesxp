@@ -3,17 +3,18 @@
 
 #include "stdafx.h"
 #include "PesXp.h"
-#include "View\LeagueHonorPage.h"
-
+#include "LeagueHonorPage.h"
+#include "WaitingDlg.h"
+#include "SyncHandler.h"
 
 // CLeagueHonorPage 对话框
 
 IMPLEMENT_DYNAMIC(CLeagueHonorPage, CPropertyPage)
 
 CLeagueHonorPage::CLeagueHonorPage()
-	: CPropertyPage(CLeagueHonorPage::IDD)
+    : CPropertyPage(CLeagueHonorPage::IDD)
 {
-
+    m_bInitData = false;
 }
 
 CLeagueHonorPage::~CLeagueHonorPage()
@@ -28,6 +29,7 @@ void CLeagueHonorPage::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(CLeagueHonorPage, CPropertyPage)
+    ON_WM_PAINT()
 END_MESSAGE_MAP()
 
 
@@ -60,4 +62,16 @@ BOOL CLeagueHonorPage::OnInitDialog()
 
     return TRUE;  // return TRUE unless you set the focus to a control
     // 异常: OCX 属性页应返回 FALSE
+}
+
+void CLeagueHonorPage::OnPaint()
+{
+    CPaintDC dc(this); // device context for painting
+
+    if (!m_bInitData)
+    {
+        CWaitingDlg::GetInstance()->PerformSelectorAndBeginWaitingDlg((CDialog*)(CPropertySheet*)this->GetParent(), _T("获取荣耀大殿信息"), CSyncHandler::RequestHonorInfo , this);
+        m_bInitData = true;
+    }
+    // 不为绘图消息调用 CPropertyPage::OnPaint()
 }

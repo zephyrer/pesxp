@@ -27,7 +27,11 @@ protected:
 
 private:
     bool m_bShowJoinButton;
+    bool m_bInitData;
 public:
     virtual BOOL OnInitDialog();
     afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+    afx_msg void OnPaint();
+    CButton m_btnUpdate;
+    void OnButtonUpdate();
 };

@@ -66,6 +66,14 @@ public:
     // 获取联赛详情
     //
     static UINT32 RequestLeagueDetail(LPVOID params);
+    //
+    // 获取荣誉殿堂信息
+    //
+    static UINT32 RequestHonorInfo(LPVOID params);
+    //
+    // 获取转会市场信息
+    //
+    static UINT32 RequestMarketInfo(LPVOID params);
 
 private:
     CUserItem* m_pUserItem;

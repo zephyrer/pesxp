@@ -5,15 +5,17 @@
 #include "PesXp.h"
 #include "LeagueMarketPage.h"
 #include "PlayerLibDlg.h"
+#include "WaitingDlg.h"
+#include "SyncHandler.h"
 
 // CLeagueMarketPage 对话框
 
 IMPLEMENT_DYNAMIC(CLeagueMarketPage, CPropertyPage)
 
 CLeagueMarketPage::CLeagueMarketPage()
-	: CPropertyPage(CLeagueMarketPage::IDD)
+    : CPropertyPage(CLeagueMarketPage::IDD)
 {
-
+    m_bInitData = false;
 }
 
 CLeagueMarketPage::~CLeagueMarketPage()
@@ -30,6 +32,7 @@ void CLeagueMarketPage::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CLeagueMarketPage, CPropertyPage)
     ON_BN_CLICKED(IDC_MARKET_BUTTON, &CLeagueMarketPage::OnBnClickedMarketButton)
+    ON_WM_PAINT()
 END_MESSAGE_MAP()
 
 
@@ -88,4 +91,16 @@ void CLeagueMarketPage::OnBnClickedMarketButton()
 {
     CPlayerLibDlg* pPlayerLibDlg = new CPlayerLibDlg();
     pPlayerLibDlg->DoModal();
+}
+
+void CLeagueMarketPage::OnPaint()
+{
+    CPaintDC dc(this); // device context for painting
+    
+    if (!m_bInitData)
+    {
+        CWaitingDlg::GetInstance()->PerformSelectorAndBeginWaitingDlg((CDialog*)(CPropertySheet*)this->GetParent(), _T("获取转会市场信息"), CSyncHandler::RequestMarketInfo , this);
+        m_bInitData = true;
+    }
+    // 不为绘图消息调用 CPropertyPage::OnPaint()
 }

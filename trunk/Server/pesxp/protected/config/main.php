@@ -1,5 +1,6 @@
 <?php
 
+require_once 'config.php';
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');
 
@@ -16,6 +17,9 @@ return array(
     'import'=>array(
         'application.models.*',
         'application.components.*',
+        'application.utils.*',
+        'application.models.forms*',
+        'application.vendors.*'
     ),
 
     'modules'=>array(
@@ -36,6 +40,15 @@ return array(
             // enable cookie-based authentication
             'allowAutoLogin'=>true,
         ),
+        // cookie 加密
+        'request'=>array(
+            'enableCookieValidation'=>true,
+        ),
+        // session 过期时间
+        'session'=>array(
+                    'class' => 'CHttpSession',
+                    'timeout' => 1800,
+        ),
         // uncomment the following to enable URLs in path-format
         
         'urlManager'=>array(
@@ -53,10 +66,10 @@ return array(
         // uncomment the following to use a MySQL database
         
         'db'=>array(
-            'connectionString' => 'mysql:host=localhost;dbname=pesxp',
+            'connectionString' => 'mysql:host='.DB_HOST.';dbname='.DB_NAME.';port='.DB_PORT,
             'emulatePrepare' => true,
-            'username' => 'miniyun',
-            'password' => 'miniyun',
+            'username' => DB_USER,
+            'password' => DB_PASSWORD,
             'charset' => 'utf8',
         ),
         
@@ -69,7 +82,7 @@ return array(
             'routes'=>array(
                 array(
                     'class'=>'CFileLogRoute',
-                    'levels'=>'error, warning',
+                    'levels'=>'debug, info, error, warning',
                 ),
                 // uncomment the following to show log messages on web pages
                 /*
@@ -85,6 +98,6 @@ return array(
     // using Yii::app()->params['paramName']
     'params'=>array(
         // this is used in contact page
-        'adminEmail'=>'webmaster@example.com',
+        'adminEmail'=>'jimmygxz@gmail.com',
     ),
 );

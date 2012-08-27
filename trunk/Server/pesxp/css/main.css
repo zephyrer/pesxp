@@ -1,3 +1,4 @@
+@CHARSET "UTF-8";
 body
 {
     margin: 0;
@@ -9,17 +10,20 @@ body
 
 #page
 {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 0 auto;
     background: white;
     border: 1px solid #C9E0ED;
+    padding: 0 10px;
 }
 
 #header
 {
-    margin: 0;
-    padding: 0;
-    border-top: 3px solid #C9E0ED;
+    float: none;
+    height: 60px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 301;
+    width: 100%;
 }
 
 #content
@@ -41,15 +45,35 @@ body
     border-top: 1px solid #C9E0ED;
 }
 
+#copyright {
+    color: #666;
+}
+
+#product a {
+    color: #666;
+    font-size: 12px;
+    text-decoration: none;
+}
+#product a:hover {
+    color: #666;
+    font-size: 12px;
+    text-decoration: underline;
+}
+
 #logo
 {
     padding: 10px 20px;
-    font-size: 200%;
+    font-size: 14px;
+    float: left;
+    width: 15%;
+	height: 40px;
 }
 
 #mainmenu
 {
     background:white url(bg.gif) repeat-x left top;
+    border-top: 4px solid #DDDDDD;
+    padding-top: 4px;
 }
 
 #mainmenu ul

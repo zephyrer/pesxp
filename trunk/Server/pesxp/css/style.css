@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+
+.databanner {
+    background: url("/images/databanner.jpg") no-repeat scroll 0 0 transparent;
+    height: 124px;
+    overflow: hidden;
+}
+
+.login {
+    float: right;
+    width: 75%;
+    height: 40px;
+    padding: 10px 20px;
+    text-align: right;
+}
+
+.login a {
+    color: #004B91;
+    font-size: 12px;
+    text-decoration: none;
+}
+.login a:hover {
+    color: #FF6D00;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.user-link {
+    padding-top: 4px;
+}
+
+.clear {
+    clear: both;
+}
+
+.loin-form {
+}
+.login-password-input,.login-username-input {
+    float: right;
+    vertical-align: middle;
+}
+
+.login-password,.login-username {
+    float: left;
+    padding: 0 9px 0 20px;
+    vertical-align: middle;
+}
+
+.login-p {
+    width: 300px;
+    margin: 0 0 1.5em;
+}

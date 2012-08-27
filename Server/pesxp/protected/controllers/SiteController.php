@@ -2,6 +2,12 @@
 
 class SiteController extends Controller
 {
+    public $loginModel;
+    
+    public function init() {
+        $this->loginModel = new LoginForm();
+    }
+    
     /**
      * Declares class-based actions.
      */
@@ -27,8 +33,6 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        // renders the view file 'protected/views/site/index.php'
-        // using the default layout 'protected/views/layouts/main.php'
         $this->render('index');
     }
 
@@ -74,7 +78,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        $model=new LoginForm;
+        $model=$this->loginModel;
 
         // if it is ajax validation request
         if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
